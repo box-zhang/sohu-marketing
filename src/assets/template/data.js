@@ -1,0 +1,254 @@
+const lookupSingleData=[
+{name:"C#",id:"1"},
+{name:"C",id:"2"},
+{name:"C++",id:"3"},
+{name:"Java",id:"4"},
+{name:"Phthon",id:"5"},
+{name:"PHP",id:"6"},
+{name:"VB",id:"7"},
+{name:"JavaScript",id:"8"},
+{name:"SQL",id:"9"},
+{name:"Objective-C",id:"10"},
+{name:"Ruby",id:"11"},
+{name:"Switf",id:"12"},
+{name:"Go",id:"13"},
+{name:"Perl",id:"14"},
+{name:"Delphi",id:"15"},
+{name:"R",id:"16"},
+{name:"PL/SQL",id:"17"},
+{name:"Assembly language",id:"18"},
+{name:"MATLAB",id:"19"},
+{name:"F#",id:"20"},
+{name:"Pascal",id:"21"},
+{name:"BASIC",id:"22"},
+{name:"AAuto",id:"23"},
+{name:"易语言",id:"24"},
+{name:"AWK",id:"25"},
+{name:"BASH",id:"26"},
+{name:"Common Lisp",id:"27"},
+{name:"Eiffel",id:"28"},
+{name:"Erlang",id:"29"}
+];
+const gradeData=[
+  {name:"大学一年级",id:"1"},
+  {name:"大学二年级",id:"2"},
+  {name:"大学三年级",id:"3"},
+  {name:"大学四年级",id:"4"}
+];
+const classData=[
+  {name:"大一101班",id:"1",gid:"1"},
+  {name:"大一102班",id:"2",gid:"1"},
+  {name:"大一103班",id:"3",gid:"1"},
+  {name:"大一104班",id:"4",gid:"1"},
+  {name:"大一105班",id:"5",gid:"1"},
+  {name:"大一106班",id:"6",gid:"1"},
+  {name:"大一107班",id:"7",gid:"1"},
+  {name:"大一108班",id:"8",gid:"1"},
+  {name:"大一109班",id:"9",gid:"1"},
+  {name:"大一110班",id:"10",gid:"1"},
+  {name:"大一111班",id:"11",gid:"1"},
+  {name:"大一112班",id:"12",gid:"1"},
+  {name:"大一113班",id:"13",gid:"1"},
+  {name:"大一114班",id:"14",gid:"1"},
+  {name:"大一115班",id:"15",gid:"1"},
+  {name:"大一116班",id:"16",gid:"1"},
+  {name:"大一117班",id:"17",gid:"1"},
+  {name:"大一118班",id:"18",gid:"1"},
+  {name:"大一119班",id:"19",gid:"1"},
+  {name:"大一120班",id:"20",gid:"1"},
+  {name:"大一121班",id:"21",gid:"1"},
+  {name:"大一122班",id:"22",gid:"1"},
+  {name:"大一123班",id:"23",gid:"1"},
+  {name:"大一124班",id:"24",gid:"1"},
+  {name:"大一125班",id:"25",gid:"1"},
+  {name:"大一126班",id:"26",gid:"1"},
+  {name:"大一127班",id:"27",gid:"1"},
+  {name:"大二201班",id:"201",gid:"2"},
+  {name:"大二202班",id:"202",gid:"2"},
+  {name:"大二203班",id:"203",gid:"2"},
+  {name:"大二204班",id:"204",gid:"2"},
+  {name:"大三301班",id:"301",gid:"3"},
+  {name:"大三302班",id:"302",gid:"3"},
+  {name:"大三303班",id:"303",gid:"3"},
+  {name:"大三304班",id:"304",gid:"3"},
+  {name:"大四401班",id:"401",gid:"4"},
+  {name:"大四402班",id:"402",gid:"4"},
+  {name:"大四403班",id:"403",gid:"4"},
+  {name:"大四404班",id:"404",gid:"4"}
+];
+const courseData=[
+  {name:"网页设计",count:324,id:"1"},
+  {name:"课件制作",count:856,id:"2"},
+  {name:"动画设计",count:69,id:"3"},
+  {name:"Java程序设计",count:963,id:"4"},
+  {name:"计算机电路基础",count:68,id:"5"},
+  {name:"C++语言程序设计",count:114,id:"6"},
+  {name:"汇编语言",count:76,id:"7"},
+  {name:"计算机组成原理",count:335,id:"8"},
+  {name:"数据结构",count:352,id:"9"},
+  {name:"微机接口技术",count:98,id:"10"},
+  {name:"数据库基础与应用",count:68,id:"11"},
+  {name:"操作系统",count:106,id:"12"},
+  {name:"单片机技术",count:541,id:"13"},
+  {name:"计算机网络",count:117,id:"14"},
+  {name:"多媒体技术基础",count:38,id:"15"}
+];
+const countryData=[
+  {text:"中国",id:"1"},
+  {text:"美国",id:"2"},
+  {text:"日本",id:"3"},
+  {text:"法国",id:"4"}
+];
+const provinceData=[
+  {text:"北京",id:"1",pid:"1"},
+  {text:"河北",id:"2",pid:"1"},
+  {text:"山西",id:"3",pid:"1"},
+  {text:"河南",id:"4",pid:"1"},
+  {text:"芝加哥",id:"5",pid:"2"},
+  {text:"哥伦布",id:"6",pid:"2"},
+  {text:"东京",id:"7",pid:"3"},
+  {text:"巴黎",id:"8",pid:"4"}
+];
+const cityData=[
+  {text:"北京市",id:"1",pid:"1"},
+  {text:"石家庄",id:"2",pid:"2"},
+  {text:"邯郸",id:"3",pid:"2"},
+  {text:"太原",id:"4",pid:"3"},
+  {text:"长治",id:"5",pid:"3"},
+  {text:"郑州",id:"6",pid:"4"},
+  {text:"焦作",id:"7",pid:"4"},
+  {text:"芝加哥市",id:"8",pid:"5"},
+  {text:"哥伦布市",id:"9",pid:"6"},
+  {text:"东京市",id:"10",pid:"7"},
+  {text:"巴黎市",id:"11",pid:"8"}
+];
+const contractData=[
+  {name:"GT-20190628#0001",id:"1",type:"框架合同",status:"新建",createdon:"2019-06-28",img:"1",owner:"王鹏伟",area:"北京",account:"北京京东科技有限公司"},
+  {name:"GT-20190614#0001",id:"1",type:"单笔合同",status:"已审批",createdon:"2019-06-14",img:"2",owner:"毋卫民",area:"上海",account:"上海飞一网络有限公司-北京分公司厂商大区"},
+  {name:"GT-20180601#0001",id:"1",type:"框架合同",status:"已签署",createdon:"2019-06-01",img:"1",owner:"王鹏伟",area:"北京",account:"北京京东科技有限公司"},
+  {name:"GT-20190523#0001",id:"1",type:"框架合同",status:"已审批",createdon:"2019-05-23",img:"2",owner:"毋卫民",area:"广州",account:"深圳天地那扬科技有限公司"},
+  {name:"GT-20190414#0001",id:"1",type:"框架合同",status:"新建",createdon:"2019-04-14",img:"1",owner:"魏建社",area:"北京",account:"北京京东科技有限公司"},
+  {name:"GT-20190416#0001",id:"1",type:"单笔合同",status:"已审批",createdon:"2019-04-16",img:"2",owner:"王鹏伟",area:"北京",account:"北京京东科技有限公司"},
+  {name:"GT-20190617#0001",id:"1",type:"框架合同",status:"新建",createdon:"2019-06-17",img:"1",owner:"毋卫民",area:"上海",account:"上海飞一网络有限公司"},
+  {name:"GT-20190521#0001",id:"1",type:"框架合同",status:"已审批",createdon:"2019-05-21",img:"2",owner:"王鹏伟",area:"北京",account:"北京京东科技有限公司"},
+  {name:"GT-20190520#0001",id:"1",type:"单笔合同",status:"已签署",createdon:"2019-05-20",img:"2",owner:"魏建社",area:"北京",account:"北京京东科技有限公司"},
+  {name:"GT-20190310#0001",id:"1",type:"框架合同",status:"新建",createdon:"2019-03-10",img:"1",owner:"毋卫民",area:"上海",account:"上海飞一网络有限公司"},
+  {name:"GT-20190211#0001",id:"1",type:"单笔合同",status:"已签署",createdon:"2019-02-11",img:"2",owner:"王鹏伟",area:"北京",account:"北京京东科技有限公司"},
+  {name:"GT-20190214#0001",id:"1",type:"框架合同",status:"新建",createdon:"2019-02-14",img:"1",owner:"毋卫民",area:"广州",account:"深圳天地那扬科技有限公司"},
+  {name:"GT-20190104#0001",id:"1",type:"框架合同",status:"新建",createdon:"2019-01-04",img:"2",owner:"魏建社",area:"北京",account:"北京京东科技有限公司"},
+  {name:"GT-20190123#0001",id:"1",type:"框架合同",status:"已签署",createdon:"2019-01-23",img:"2",owner:"毋卫民",area:"上海",account:"上海飞一网络有限公司"},
+  {name:"GT-20190123#0002",id:"1",type:"单笔合同",status:"新建",createdon:"2019-01-23",img:"1",owner:"王鹏伟",area:"北京",account:"北京京东科技有限公司"},
+  {name:"GT-20190628#0002",id:"1",type:"框架合同",status:"已审批",createdon:"2019-06-28",img:"2",owner:"王鹏伟",area:"广州",account:"深圳天地那扬科技有限公司"},
+  {name:"GT-20190628#0003",id:"1",type:"单笔合同",status:"新建",createdon:"2019-06-28",img:"2",owner:"魏建社",area:"北京",account:"北京京东科技有限公司"},
+  {name:"GT-20190624#0001",id:"1",type:"框架合同",status:"已审批",createdon:"2019-06-24",img:"2",owner:"王鹏伟",area:"广州",account:"深圳天地那扬科技有限公司"},
+  {name:"GT-20190628#0004",id:"1",type:"框架合同",status:"新建",createdon:"2019-06-28",img:"1",owner:"王鹏伟",area:"北京",account:"北京京东科技有限公司"},
+];
+const indexBarData=[
+  {index:"A",data:[
+    {name:"安迪",account:"北京京东科技有限公司"},
+    {name:"艾晓萌",account:"上海飞一网络有限公司"},
+    {name:"敖翔",account:"深圳天地那扬科技有限公司"},
+    {name:"安亮",account:"北京京东科技有限公司"}
+  ]},
+  {index:"B",data:[
+    {name:"白杨",account:"北京京东科技有限公司"},
+    {name:"白永翔",account:"上海飞一网络有限公司"},
+    {name:"边少华",account:"深圳天地那扬科技有限公司"},
+    {name:"白露",account:"北京京东科技有限公司"}
+  ]},
+  {index:"D",data:[
+    {name:"党康",account:"北京京东科技有限公司"},
+    {name:"艾晓萌",account:"上海飞一网络有限公司"},
+    {name:"董辉",account:"深圳天地那扬科技有限公司"},
+    {name:"丁雨",account:"北京京东科技有限公司"}
+  ]},
+  {index:"J",data:[
+    {name:"金怡",account:"北京京东科技有限公司"},
+    {name:"纪彬",account:"上海飞一网络有限公司"},
+    {name:"金雪花",account:"深圳天地那扬科技有限公司"},
+    {name:"姜旭",account:"北京京东科技有限公司"}
+  ]},
+  {index:"L",data:[
+    {name:"刘洪",account:"北京京东科技有限公司"},
+    {name:"刘敬彬",account:"上海飞一网络有限公司"},
+    {name:"李玉明",account:"深圳天地那扬科技有限公司"},
+    {name:"李先生",account:"北京京东科技有限公司"}
+  ]},
+  {index:"M",data:[
+    {name:"马强",account:"北京京东科技有限公司"},
+    {name:"缪金标",account:"上海飞一网络有限公司"},
+    {name:"马英宇",account:"深圳天地那扬科技有限公司"},
+    {name:"莫非",account:"北京京东科技有限公司"}
+  ]},
+  {index:"N",data:[
+    {name:"宁晶",account:"北京京东科技有限公司"},
+    {name:"牛燕燕",account:"上海飞一网络有限公司"},
+    {name:"倪明园",account:"深圳天地那扬科技有限公司"},
+    {name:"钮丽",account:"北京京东科技有限公司"}
+  ]},
+  {index:"P",data:[
+    {name:"彭锐",account:"北京京东科技有限公司"},
+    {name:"庞晓梅",account:"上海飞一网络有限公司"},
+    {name:"潘磊",account:"深圳天地那扬科技有限公司"},
+    {name:"彭树华",account:"北京京东科技有限公司"}
+  ]},
+  {index:"Q",data:[
+    {name:"邱亚夫",account:"北京京东科技有限公司"},
+    {name:"秦勇",account:"上海飞一网络有限公司"},
+    {name:"钱淼",account:"深圳天地那扬科技有限公司"},
+    {name:"钱密迦",account:"北京京东科技有限公司"}
+  ]},
+  {index:"R",data:[
+    {name:"任杭州",account:"北京京东科技有限公司"},
+    {name:"任蓉",account:"上海飞一网络有限公司"},
+    {name:"阮婉红",account:"深圳天地那扬科技有限公司"},
+    {name:"阮政钦",account:"北京京东科技有限公司"}
+  ]},
+  {index:"S",data:[
+    {name:"施昕",account:"北京京东科技有限公司"},
+    {name:"施展华",account:"上海飞一网络有限公司"},
+    {name:"孙秀花",account:"深圳天地那扬科技有限公司"},
+    {name:"沈迪",account:"北京京东科技有限公司"}
+  ]},
+  {index:"T",data:[
+    {name:"唐亮",account:"北京京东科技有限公司"},
+    {name:"田红蕾",account:"上海飞一网络有限公司"},
+    {name:"TeddyLow",account:"深圳天地那扬科技有限公司"},
+    {name:"田恬",account:"北京京东科技有限公司"}
+  ]},
+  {index:"W",data:[
+    {name:"吴蔚",account:"北京京东科技有限公司"},
+    {name:"王媛媛",account:"上海飞一网络有限公司"},
+    {name:"王军",account:"深圳天地那扬科技有限公司"},
+    {name:"王柄坤",account:"北京京东科技有限公司"}
+  ]},
+  {index:"X",data:[
+    {name:"熊峰",account:"北京京东科技有限公司"},
+    {name:"薛冰",account:"上海飞一网络有限公司"},
+    {name:"徐隽隽",account:"深圳天地那扬科技有限公司"},
+    {name:"徐杰",account:"北京京东科技有限公司"}
+  ]},
+  {index:"Y",data:[
+    {name:"尹秋月",account:"北京京东科技有限公司"},
+    {name:"余帆",account:"上海飞一网络有限公司"},
+    {name:"杨春华",account:"深圳天地那扬科技有限公司"},
+    {name:"姚芮敏",account:"北京京东科技有限公司"}
+  ]},
+  {index:"Z",data:[
+    {name:"朱凯",account:"北京京东科技有限公司"},
+    {name:"周珊珊",account:"上海飞一网络有限公司"},
+    {name:"张莉",account:"深圳天地那扬科技有限公司"},
+    {name:"张斗荣",account:"北京京东科技有限公司"}
+  ]},
+];
+export default{
+    lookupSingleData,
+    gradeData,
+    classData,
+    courseData,
+    countryData,
+    provinceData,
+    cityData,
+    contractData,
+    indexBarData
+  }

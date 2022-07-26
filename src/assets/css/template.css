@@ -1,0 +1,34 @@
+
+/* 模版使用样式 */
+body{
+    background: #f8f8f9;
+}
+.van-actionsheet-destructive{
+    color:#ff4444;
+}
+.van-actionsheet-cancel{
+    color:#808695;
+}
+.t-list-dropdown-item{
+    font-size: 12px!important;
+}
+.t-search-top .van-search__content{
+    background-color:#ffffff; 
+    border-radius: 5px;
+}
+.primary-tabs .van-tabs__line{
+    bottom:20px;
+}
+.t-search-result .van-tabs__line{
+    bottom:20px;
+}
+.t-pull-load-area{
+    color:#17233d;
+    font-size: 11px;
+}
+.t-pull-load-area img{
+    width:40px;
+    height:40px;
+    vertical-align: middle;
+    margin-right:6px;
+}
