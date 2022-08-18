@@ -9,7 +9,7 @@
 export default {
   name: 'home',
   created(){
-    console.log(this.$config_env.VUE_APP_ENV)
+    console.log("VUE_APP_ENV:"+this.$config_env.VUE_APP_ENV)
   }
 }
 </script>

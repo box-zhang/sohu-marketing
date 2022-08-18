@@ -1,4 +1,4 @@
-<template>
+ <template>
 	<div class="page">
 		<!-- 导航栏 -->
 		<!-- <van-nav-bar
