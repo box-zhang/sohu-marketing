@@ -9,8 +9,8 @@ import anli from './views/anli/anli.vue'
 Vue.use(Router)
 
 const router = new Router({
-	mode: '', //history 去掉url中的#
-	base: '', // 注意更改你子项目名，这个对应你的 build.assetsPublicP
+  mode: '', //history 去掉url中的#
+  base: '', // 注意更改你子项目名，这个对应你的 build.assetsPublicP
   routes: [
     // {
     //   path: '/',
@@ -19,7 +19,7 @@ const router = new Router({
     //   meta: {
     //     //页面配置，主要用于标题栏，title必须有，backgroundColor和Button看页面需要，backgroundColor默认为全局配置的背景色
     //     title: "开发模版"
-    //     // backgroundColor: "2d8cf0", 
+    //     // backgroundColor: "2d8cf0",
     //     // rightButton: {
     //     //   type: 'image',
     //     //   name: 'search',
@@ -29,162 +29,166 @@ const router = new Router({
     //     // },
     //   }
     // },
-	{
-	  path: '/',
-	  name: 'home',
-	  component: home,
-	  meta: {
-	    keepAlive: true,
-		title:"首页"
-	  }
-	},
-	{
-	  path: '/newsPage',
-	  name: 'newsPage',
-	  component: () => import('./views/newsPage/newsPage.vue')
-	},
-	{
-	  path: '/newsDetail',
-	  name: 'newsDetail',
-	  component: () => import('./views/newsPage/newsDetail.vue')
-	},
-	{
-	  path: '/proPage',
-	  name: 'proPage',
-	  component: () => import('./views/project/proPage.vue')
-	},
-	{
-	  path: '/proDetail',
-	  name: 'proDetail',
-	  component: () => import('./views/project/proDetail.vue')
-	},
-	{
-	  path: '/ziyuanPage',
-	  name: 'ziyuanPage',
-	  component: () => import('./views/ziyuan/ziyuanPage.vue')
-	},
-	{
-	  path: '/ziyuanDetail',
-	  name: 'ziyuanDetail',
-	  component: () => import('./views/ziyuan/ziyuanDetail.vue')
-	},
-	{
-	  path: '/goodanliPage',
-	  name: 'goodanliPage',
-	  component: () => import('./views/goodAnli/goodanliPage.vue')
-	},
-	{
-	  path: '/goodanliDetail',
-	  name: 'goodanliDetail',
-	  component: () => import('./views/goodAnli/goodanliDetail.vue')
-	},
-	{
-	  path: '/anli',
-	  name: 'anli',
-	  component: anli,
-	  meta: {
-	    keepAlive: true
-	  }
-	},
-	{
-	  path: '/yxanliku',
-	  name: 'yxanliku',
-	  component: () => import('./views/yxanliku/yxanliku.vue')
-	},
-	{
-	  path: '/speak',
-	  name: 'speak',
-	  component: () => import('./views/speak/speak.vue')
-	},
-	{
-	  path: '/callphone',
-	  name: 'callphone',
-	  component: () => import('./views/speak/callphone.vue')
-	},
+    {
+      path: '/',
+      name: 'home',
+      component: home,
+      meta: {
+        keepAlive: true,
+        title: "首页"
+      }
+    }, {
+      path: '/marketing',
+      name: 'marketing',
+      component: () => import('./views/marketing/marketing.vue')
+    },
+    {
+      path: '/newsPage',
+      name: 'newsPage',
+      component: () => import('./views/newsPage/newsPage.vue')
+    },
+    {
+      path: '/newsDetail',
+      name: 'newsDetail',
+      component: () => import('./views/newsPage/newsDetail.vue')
+    },
+    {
+      path: '/proPage',
+      name: 'proPage',
+      component: () => import('./views/project/proPage.vue')
+    },
+    {
+      path: '/proDetail',
+      name: 'proDetail',
+      component: () => import('./views/project/proDetail.vue')
+    },
+    {
+      path: '/ziyuanPage',
+      name: 'ziyuanPage',
+      component: () => import('./views/ziyuan/ziyuanPage.vue')
+    },
+    {
+      path: '/ziyuanDetail',
+      name: 'ziyuanDetail',
+      component: () => import('./views/ziyuan/ziyuanDetail.vue')
+    },
+    {
+      path: '/goodanliPage',
+      name: 'goodanliPage',
+      component: () => import('./views/goodAnli/goodanliPage.vue')
+    },
+    {
+      path: '/goodanliDetail',
+      name: 'goodanliDetail',
+      component: () => import('./views/goodAnli/goodanliDetail.vue')
+    },
+    {
+      path: '/anli',
+      name: 'anli',
+      component: anli,
+      meta: {
+        keepAlive: true
+      }
+    },
+    {
+      path: '/yxanliku',
+      name: 'yxanliku',
+      component: () => import('./views/yxanliku/yxanliku.vue')
+    },
+    {
+      path: '/speak',
+      name: 'speak',
+      component: () => import('./views/speak/speak.vue')
+    },
+    {
+      path: '/callphone',
+      name: 'callphone',
+      component: () => import('./views/speak/callphone.vue')
+    },
     {
       path: '/icon',
       name: 'icon',
       component: () => import('./views/template/icon/Icon.vue'),
-      meta:{
-        title:"图标"
+      meta: {
+        title: "图标"
       }
     },
     {
       path: '/lookup',
       name: 'lookup',
       component: () => import('./views/template/assembly/LookupPage.vue'),
-      meta:{
-        title:"选择组件"
+      meta: {
+        title: "选择组件"
       }
     },
     {
       path: '/form',
       name: 'form',
       component: () => import('./views/template/assembly/FormPage.vue'),
-      meta:{
-        title:"表单组件"
+      meta: {
+        title: "表单组件"
       }
     },
     {
       path: '/baseform',
       name: 'baseform',
       component: () => import('./views/template/assembly/form/BaseForm.vue'),
-      meta:{
-        title:"基础表单"
+      meta: {
+        title: "基础表单"
       }
     },
     {
       path: '/complexform',
       name: 'complexform',
       component: () => import('./views/template/assembly/form/ComplexForm.vue'),
-      meta:{
-        title:"复杂表单"
+      meta: {
+        title: "复杂表单"
       }
     },
     {
       path: '/buttonform',
       name: 'buttonform',
       component: () => import('./views/template/assembly/form/ButtonForm.vue'),
-      meta:{
-        title:"自定义按钮表单"
+      meta: {
+        title: "自定义按钮表单"
       }
     },
     {
       path: '/calendar',
       name: 'calendar',
       component: () => import('./views/template/assembly/CalendarPage.vue'),
-      meta:{
-        title:"日历组件"
+      meta: {
+        title: "日历组件"
       }
     },
     {
       path: '/error',
       name: 'error',
       component: () => import('./views/template/assembly/ErrorPage.vue'),
-      meta:{
-        title:"异常组件"
+      meta: {
+        title: "异常组件"
       }
     },
     {
       path: '/nav',
       name: 'nav',
       component: () => import('./views/template/hxe/NavigationBar.vue'),
-      meta:{
-        title:"设置标题栏"
+      meta: {
+        title: "设置标题栏"
       }
     },
     {
       path: '/list',
       name: 'list',
       component: () => import('./views/template/page/List.vue'),
-      meta:{
-        title:"列表",
+      meta: {
+        title: "列表",
         rightButton: {
-            type: 'image',
-            name: 'search',
-            handler: function () {
-                Vue.prototype.$hxe.showToast("这里要跳转查询页面");
-            }
+          type: 'image',
+          name: 'search',
+          handler: function () {
+            Vue.prototype.$hxe.showToast("这里要跳转查询页面");
+          }
         }
       }
     },
@@ -192,40 +196,40 @@ const router = new Router({
       path: '/search',
       name: 'search',
       component: () => import('./views/template/page/Search.vue'),
-      meta:{
-        title:"搜索"
+      meta: {
+        title: "搜索"
       }
     },
     {
       path: '/indexbar',
       name: 'indexbar',
       component: () => import('./views/template/page/IndexBar.vue'),
-      meta:{
-        title:"索引定位"
+      meta: {
+        title: "索引定位"
       }
     },
     {
       path: '/horizontal',
       name: 'horizontal',
       component: () => import('./views/template/page/Horizontal.vue'),
-      meta:{
-        title:"横屏显示"
+      meta: {
+        title: "横屏显示"
       }
     },
     {
       path: '/grid',
       name: 'grid',
       component: () => import('./views/template/page/Grid.vue'),
-      meta:{
-        title:"表格"
+      meta: {
+        title: "表格"
       }
     },
     {
       path: '/temphome',
       name: 'temphome',
       component: () => import('./views/template/page/TempHome.vue'),
-      meta:{
-        title:"主页"
+      meta: {
+        title: "主页"
       }
     }
   ]
@@ -233,8 +237,8 @@ const router = new Router({
 
 //跳转前方法
 router.beforeEach((to, from, next) => {
-	console.log("跳转前方法")
-	next(true)
+  console.log("跳转前方法")
+  next(true)
   // let isContinue = true;
   // //特殊情况，在lookup页面点击新建时，不关闭popup，直接跳转
   // if(!to.query.fromlookup){
