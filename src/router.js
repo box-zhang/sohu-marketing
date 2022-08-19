@@ -2,9 +2,9 @@
 // this.$router.push({name: '/order/page2',params:{ id:'6'}});
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from './views/template/Index.vue'
-import home from './views/home/home.vue'
 import anli from './views/anli/anli.vue'
+import home from './views/home/home.vue'
+import marketing from './views/marketing/marketing.vue'
 
 Vue.use(Router)
 
@@ -37,10 +37,6 @@ const router = new Router({
         keepAlive: true,
         title: "首页"
       }
-    }, {
-      path: '/marketing',
-      name: 'marketing',
-      component: () => import('./views/marketing/marketing.vue')
     },
     {
       path: '/newsPage',
@@ -87,7 +83,17 @@ const router = new Router({
       name: 'anli',
       component: anli,
       meta: {
-        keepAlive: true
+        keepAlive: true,
+        title: "案例"
+      }
+    },
+    {
+      path: '/marketing',
+      name: 'marketing',
+      component: marketing,
+      meta: {
+        keepAlive: true,
+        tilte: "培训"
       }
     },
     {
