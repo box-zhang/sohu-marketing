@@ -9,15 +9,15 @@
                  :key="item.cardId">
           <van-row gutter="10"
                    class="video-lr"
-                   v-for="item in item.cardList">
+                   v-for="itemI in item.cardList">
             <van-col span="8">
               <van-image width="100%"
                          fit="scale-down"
                          position="cover"
-                         :src="item.courseUrl" />
+                         :src="itemI.courseUrl" />
             </van-col>
             <van-col span="16">
-              <videoMsg :videoData="item"></videoMsg>
+              <courseMsg :courseData="itemI"></courseMsg>
             </van-col>
           </van-row>
         </van-tab>
@@ -30,13 +30,13 @@
 
 <script>
 import Mock from "mockjs";
-import videoMsg from "@/views/mkModule/videoMsg.vue";
+import courseMsg from "@/views/mkModule/courseMsg.vue";
 import navBar from "@/views/mkModule/navBar.vue";
 import footerLine from "@/views/mkModule/footerLine.vue";
 export default {
   name: 'businessTraining',
   components: {
-    videoMsg, navBar, footerLine
+    courseMsg, navBar, footerLine
   },
   data() {
     return {
@@ -73,7 +73,7 @@ export default {
 }
 </script>
 
-<style class="scoped" lang="less">
+<style  lang="less">
 .van-image {
   border-radius: 5px;
   overflow: hidden;
@@ -85,6 +85,7 @@ export default {
 
 .van-sticky {
   margin-bottom: 15px;
+  box-shadow: 0px 6px 32px 0px rgba(193, 193, 193, 0.16);
 }
 
 .van-tabs__line {
@@ -99,10 +100,10 @@ export default {
   margin: 12px 0;
 
   .msg-r {
-    position: absolute;
-    bottom: 0;
-    overflow: hidden;
-    width: 78%;
+    // position: absolute;
+    // bottom: 0;
+    // overflow: hidden;
+    // width: 78%;
   }
 }
 </style>

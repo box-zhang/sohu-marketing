@@ -7,12 +7,12 @@
                v-for="item in watchList">
         <van-col span="8">
           <van-image width="100%"
-                     fit="scale-down"
-                     position="cover"
+                     fit="cover"
+                     position="center"
                      :src="item.courseUrl" />
         </van-col>
         <van-col span="16">
-          <videoMsg :videoData="item"></videoMsg>
+          <courseMsg :courseData="item"></courseMsg>
         </van-col>
       </van-row>
     </div>
@@ -22,13 +22,13 @@
 
 <script>
 import Mock from "mockjs";
-import videoMsg from "@/views/mkModule/videoMsg.vue";
+import courseMsg from "@/views/mkModule/courseMsg.vue";
 import navBar from "@/views/mkModule/navBar.vue";
 import footerLine from "@/views/mkModule/footerLine.vue";
 export default {
   name: 'businessTraining',
   components: {
-    videoMsg, navBar, footerLine
+    courseMsg, navBar, footerLine
   },
   data() {
     return {
@@ -61,7 +61,7 @@ export default {
 }
 </script>
 
-<style class="scoped" lang="less">
+<style  lang="less">
 .van-image {
   border-radius: 5px;
   overflow: hidden;
@@ -87,14 +87,14 @@ export default {
   margin: 12px 0;
 
   .msg-r {
-    position: absolute;
-    bottom: 0;
-    overflow: hidden;
-    width: 78%;
+    // position: absolute;
+    // bottom: 0;
+    // overflow: hidden;
+    // width: 78%;
   }
 }
 
 .video-msg .time {
-  float: left
+  float: left !important;
 }
 </style>

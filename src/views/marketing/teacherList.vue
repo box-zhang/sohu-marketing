@@ -17,7 +17,8 @@
           <div>{{ i.tText }}</div>
           <div class="tag-box">
             <van-tag type="primary"
-                     class="gray text-hidden">{{ i.tTitle }}</van-tag>
+                     v-for="(item, index) in i.tTags"
+                     :key="index">{{ item }}</van-tag>
           </div>
         </div>
       </div>
@@ -41,7 +42,7 @@ export default {
   data() {
     return {
       active: "",
-      barName: "大咖驾到",
+      barName: "内部讲师",
       teacherMsg: {},
       activeName: ''
     }
@@ -54,7 +55,6 @@ export default {
           tImg: "@dataImage('120x160','png')",
           tName: "@cname()",
           tText: "@cword(3, 50)",
-          tTitle: "@cword(8, 20)",
           "tTags|1-3": [
             "@cword(1, 5)"
           ],
@@ -186,11 +186,6 @@ export default {
 
   .van-tab {
     font-size: 16px;
-  }
-
-  .gray {
-    background: #F3F3F3;
-    color: #777
   }
 }
 </style>

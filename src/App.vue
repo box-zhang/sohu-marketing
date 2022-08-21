@@ -683,7 +683,16 @@ iframe {
 	font-weight: blod
 }
 
+.van-tag--primary {
+	background-color: #FFF7EB;
+	color: #EFA11F
+}
+
 .van-tabs__line {
 	background-color: #FFD33F
+}
+
+.mb-20 {
+	margin-bottom: 20px;
 }
 </style>

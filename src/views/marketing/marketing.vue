@@ -79,7 +79,7 @@
           <van-grid-item v-for="item in newCourseMsg.newCourseList"
                          :key="item.id">
             <van-image :src="item.courseImg" />
-            <videoMsg :videoData="item"></videoMsg>
+            <courseMsg :courseData="item"></courseMsg>
           </van-grid-item>
         </van-grid>
       </div>
@@ -113,14 +113,14 @@
 
 <script>
 import mkTitle from "@/views/mkModule/mTitle.vue";
-import videoMsg from "@/views/mkModule/videoMsg.vue";
+import courseMsg from "@/views/mkModule/courseMsg.vue";
 import navBar from "@/views/mkModule/navBar.vue";
 import footerLine from "@/views/mkModule/footerLine.vue";
 import Mock from "mockjs";
 export default {
   name: 'marketing',
   components: {
-    mkTitle, videoMsg, navBar, footerLine
+    mkTitle, courseMsg, navBar, footerLine
   },
   data() {
     return {
@@ -236,7 +236,7 @@ export default {
 }
 </script>
 
-<style class="scoped" lang="less">
+<style lang="less">
 .my-swipe {
   margin-top: 2px;
   border-radius: 5px;
@@ -377,8 +377,17 @@ export default {
     overflow: hidden;
   }
 
-  h3 {
+  .video-msg .msg {
+    width: 100%
+  }
+
+  .video-msg h3 {
     margin: 5px
+  }
+
+  .video-msg .msg-b {
+    position: relative;
+    width: 100%;
   }
 
   .van-grid {

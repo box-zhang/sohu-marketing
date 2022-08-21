@@ -4,25 +4,64 @@
       <navBar :barName="barName"></navBar>
     </div>
     <div class="teacher-ifo">
-      <div class="teacher-item"
-           v-for="i in teacherMsg"
-           :key="i.tId">
-        <van-image fit="cover"
-                   width="120px"
-                   height="160px"
-                   position="center"
-                   :src="i.tImg" />
-        <div class="teacher-text">
-          <h2>{{ i.tName }}</h2>
-          <div>{{ i.tText }}</div>
-          <div class="tag-box">
-            <van-tag type="primary"
-                     class="gray text-hidden">{{ i.tTitle }}</van-tag>
-          </div>
+      <van-image fit="cover"
+                 width="120px"
+                 height="160px"
+                 position="center"
+                 src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
+      <div class="teacher-text">
+        <h2>{{ teacherMsg.tName }}</h2>
+        <div>{{ teacherMsg.tText }}</div>
+        <div class="tag-box">
+          <van-tag type="primary"
+                   v-for="(item, index) in teacherMsg.tTags"
+                   :key="index">{{ item }}</van-tag>
         </div>
       </div>
     </div>
-    <footerLine></footerLine>
+    <div class="teacher-course">
+      <van-tabs v-model:active="activeName"
+                scrollspy>
+        <van-tab title="课程目录"
+                 name="kcml">
+          <div class="course-list">
+            <div class="course-item"
+                 v-for="item in teacherMsg.courseList"
+                 :key="item.cId">
+              <van-icon name="play-circle"
+                        color="#FFD33F" />
+              <div class="course-text">
+                <h3>{{ item.cName }}</h3>
+                <div class="time-box">
+                  <div class="time-long">
+                    <van-icon name="clock-o"
+                              color="#aaa" />{{ item.cTimeLong }}
+                  </div>
+                  <div class="time">
+                    <van-icon name="clock-o"
+                              color="#aaa" />{{ item.cTime }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="show-more">展开更多
+              <van-icon name="arrow-down"
+                        size="12" />
+            </p>
+          </div>
+          <div class="mb-20">
+            <h2>计划课程</h2>
+            <p>马上推出某课程</p>
+          </div>
+        </van-tab>
+        <van-tab title="讲师评价"
+                 name="jspj">
+          <h2>讲师评价</h2>
+          <evaluateMsg></evaluateMsg>
+        </van-tab>
+      </van-tabs>
+    </div>
+
   </div>
 </template>
 
@@ -32,16 +71,15 @@ import Mock from "mockjs";
 import courseMsg from "@/views/mkModule/courseMsg.vue";
 import navBar from "@/views/mkModule/navBar.vue";
 import evaluateMsg from "@/views/mkModule/evaluateMsg.vue";
-import footerLine from "@/views/mkModule/footerLine.vue";
 export default {
-  name: 'teacherList',
+  name: 'teacherIn',
   components: {
-    navBar, mkTitle, courseMsg, evaluateMsg, footerLine
+    navBar, mkTitle, courseMsg, evaluateMsg
   },
   data() {
     return {
       active: "",
-      barName: "大咖驾到",
+      barName: "讲师详情",
       teacherMsg: {},
       activeName: ''
     }
@@ -49,12 +87,11 @@ export default {
   methods: {
     init() {
       const { teacherMsg } = Mock.mock({
-        "teacherMsg|1-12": [{
+        "teacherMsg": {
           tId: "@increment",
           tImg: "@dataImage('120x160','png')",
           tName: "@cname()",
           tText: "@cword(3, 50)",
-          tTitle: "@cword(8, 20)",
           "tTags|1-3": [
             "@cword(1, 5)"
           ],
@@ -65,7 +102,7 @@ export default {
             cTimeLong: "45分34秒"
           }]
           // "@date('yyyy.MM.dd')"
-        }],
+        },
       });
       this.teacherMsg = teacherMsg;
       console.log(teacherMsg)
@@ -85,17 +122,8 @@ export default {
 <style lang="less" scope>
 .teacher-in {
   .teacher-ifo {
-    margin: 20px 0
-  }
-
-  .teacher-item {
     position: relative;
-    margin-bottom: 10px;
-
-    .van-image {
-      border-radius: 5px;
-      overflow: hidden;
-    }
+    margin: 20px 0
   }
 
   .teacher-text {
@@ -186,11 +214,6 @@ export default {
 
   .van-tab {
     font-size: 16px;
-  }
-
-  .gray {
-    background: #F3F3F3;
-    color: #777
   }
 }
 </style>

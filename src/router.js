@@ -129,6 +129,34 @@ const router = new Router({
                 import ('./views/marketing/salesTechnique.vue')
         },
         {
+            path: '/courseIn',
+            name: 'courseIn',
+            component: () =>
+                import ('./views/marketing/courseIn.vue')
+        },
+        {
+            path: '/evaluate',
+            name: 'evaluate',
+            component: () =>
+                import ('./views/marketing/evaluate.vue')
+        },
+        {
+            path: '/teacherIn',
+            name: 'teacherIn',
+            component: () =>
+                import ('./views/marketing/teacherIn.vue')
+        }, {
+            path: '/teacherList',
+            name: 'teacherList',
+            component: () =>
+                import ('./views/marketing/teacherList.vue')
+        }, {
+            path: '/masters',
+            name: 'masters',
+            component: () =>
+                import ('./views/marketing/masterTeacher.vue')
+        },
+        {
             path: '/yxanliku',
             name: 'yxanliku',
             component: () =>

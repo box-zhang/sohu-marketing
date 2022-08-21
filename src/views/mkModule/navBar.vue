@@ -30,5 +30,8 @@ export default {
 }
 </script>
 
-<style>
+<style scope lang="less">
+.van-nav-bar .van-nav-bar__title {
+  font-size: 18px;
+}
 </style>
