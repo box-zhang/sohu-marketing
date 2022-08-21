@@ -123,6 +123,12 @@ const router = new Router({
                 import ('./views/marketing/newUserLearn.vue')
         },
         {
+            path: '/learnStep',
+            name: 'learnStep',
+            component: () =>
+                import ('./views/marketing/learnStep.vue')
+        },
+        {
             path: '/sales',
             name: 'sales',
             component: () =>

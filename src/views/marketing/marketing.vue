@@ -105,7 +105,6 @@
           </van-grid-item>
         </van-grid>
       </div>
-
     </div>
     <footerLine></footerLine>
   </div>
@@ -254,7 +253,7 @@ export default {
   position: relative;
   padding: 10px;
   background: #FFF8DF;
-  border-radius: 10px;
+  border-radius: 5px;
 
   .hint-img {
     position: absolute;

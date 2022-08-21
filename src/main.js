@@ -17,7 +17,7 @@ Vue.prototype.$watermark = watermark
     // new Vconsole();
 import tabbar from './components/tabbar.vue';
 Vue.component('tabbar', tabbar)
-import { NavBar, Icon, Swipe, SwipeItem, Grid, GridItem, Tabbar, TabbarItem, Image as VanImage, Tag, Tab, Tabs, Collapse, CollapseItem, Col, Row, Rate, Button, Field, CellGroup } from 'vant';
+import { NavBar, Icon, Swipe, SwipeItem, Grid, GridItem, Tabbar, TabbarItem, Image as VanImage, Tag, Tab, Tabs, Collapse, CollapseItem, Col, Row, Rate, Button, Field, CellGroup, Step, Steps } from 'vant';
 
 import 'lib-flexible/flexible'
 
@@ -31,7 +31,7 @@ Vue.use(NavBar).use(Icon).use(Swipe)
     .use(SwipeItem).use(Grid).use(GridItem)
     .use(Tabbar).use(TabbarItem).use(VanImage)
     .use(Tag).use(Tab).use(Tabs).use(Collapse).use(CollapseItem)
-    .use(Col).use(Row).use(Rate).use(Button).use(Field).use(CellGroup);
+    .use(Col).use(Row).use(Rate).use(Button).use(Field).use(CellGroup).use(Step).use(Steps);
 
 
 //全局配置项
