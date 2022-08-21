@@ -7,9 +7,15 @@
 		<!-- 每次进入刷新 -->
 		<router-view v-if="!$route.meta.keepAlive"></router-view>
 		<!-- 底部标签导航 -->
-		<tabbar v-if="fishowtab" :tabbarValue="tabbarTempValue"></tabbar>
+		<tabbar v-if="fishowtab"
+						:tabbarValue="tabbarTempValue"></tabbar>
 		<!-- 全局ActionSheet对象,用于在非狐小e环境 -->
-		<van-action-sheet :value="show" @input="setShowActionSheet($event)" :actions="actions" @select="onSelect" :title="title" close-on-click-action />
+		<van-action-sheet :value="show"
+											@input="setShowActionSheet($event)"
+											:actions="actions"
+											@select="onSelect"
+											:title="title"
+											close-on-click-action />
 	</div>
 </template>
 <script>
@@ -17,8 +23,8 @@ import { ActionSheet } from 'vant';
 export default {
 	data() {
 		return {
-			fishowtab:false,
-			tabbarTempValue:0
+			fishowtab: false,
+			tabbarTempValue: 0,
 		};
 	},
 	created() {
@@ -35,40 +41,47 @@ export default {
 	/**
 	 * 监听同一个路径，不同参数的刷新
 	 */
-	watch:{
+	watch: {
 		// 方法1
-	    '$route' (to, from) { //监听路由是否变化
-		    console.log(to)
+		'$route'(to, from) { //监听路由是否变化
+			console.log(to)
 			console.log(from)
-			this.showdaohang(to.name)			
-	    },
+			this.showdaohang(to.name)
+		},
 	},
 	methods: {
 		//判断路由是不是需要底部导航
-		showdaohang(name){
-			var arr = ["home","anli"]
-			if(arr.indexOf(name)>-1){
+		showdaohang(name) {
+			var arr = ["home", "anli", "marketing"]
+			if (arr.indexOf(name) > -1) {
 				this.fishowtab = true
-				if(name=="home"){
+				if (name == "home") {
 					this.$hxe.setNavigationBar({
-					    title: "搜狐营销+",
+						title: "搜狐营销+",
 						backgroundColor: '#FFFFFF',
-					    whiteTint: false,
-					    pageTopOffset: false
+						whiteTint: false,
+						pageTopOffset: false
 					})
 					this.tabbarTempValue = 0
-				}else if(name=="anli"){
+				} else if (name == "anli") {
 					this.$hxe.setNavigationBar({
-					    title: "案例",
+						title: "案例",
 						backgroundColor: '#FFD33F',
-					    whiteTint: true,
-					    pageTopOffset: false
+						whiteTint: true,
+						pageTopOffset: false
 					})
 					this.tabbarTempValue = 1
-				}else{
-					
+				} else if (name == "marketing") {
+					this.$hxe.setNavigationBar({
+						title: "培训",
+						backgroundColor: '#FFD33F',
+						whiteTint: true,
+						pageTopOffset: false
+					})
+					this.tabbarTempValue = 2
+
 				}
-			}else{
+			} else {
 				this.fishowtab = false
 			}
 		},
@@ -97,45 +110,56 @@ export default {
 </script>
 
 <style lang="less">
-body{
+body {
 	background-color: #FFFFFF !important;
-}	
+	overflow-x: hidden
+}
+
 #app {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #2c3e50;
 }
+
 #nav {
 	padding: 30px;
+
 	a {
 		font-weight: bold;
 		color: #2c3e50;
+
 		&.router-link-exact-active {
 			color: #42b983;
 		}
 	}
 }
-.van-tabbar-item--active{
+
+.van-tabbar-item--active {
 	font-weight: bold;
 }
+
 .page {
 	width: 100%;
 	height: 100%;
 	background-color: #ffffff;
 }
+
 .block20 {
 	width: 100%;
 	height: 10px;
 }
+
 .block30 {
 	width: 100%;
 	height: 20px;
 }
+
 .block24 {
 	width: 100%;
 	height: 24px;
 }
+
 .zhezhao {
 	width: 100%;
 	height: 100%;
@@ -145,6 +169,7 @@ body{
 	z-index: 16;
 	background: rgba(0, 0, 0, 0.7);
 }
+
 .footer {
 	width: 100%;
 	text-align: center;
@@ -155,11 +180,13 @@ body{
 	color: #aaaaaa;
 	line-height: 58px;
 }
-iframe{
-    width: 100vw !important;
-    height: 100vh !important;
-    border: none;
+
+iframe {
+	width: 100vw !important;
+	height: 100vh !important;
+	border: none;
 }
+
 // .van-ellipsis{
 // 	color: #333333;
 // }
@@ -175,6 +202,7 @@ iframe{
 .ziyuandiv {
 	width: 343px;
 	margin: 0 auto;
+
 	.title {
 		// height: 56px;
 		// line-height: 56px;
@@ -183,10 +211,12 @@ iframe{
 		font-weight: bold;
 		color: #333333;
 	}
+
 	.zytop {
 		margin-top: 16px;
 		display: flex;
 		justify-content: space-between;
+
 		.left {
 			width: 146px;
 			height: 146px;
@@ -194,10 +224,12 @@ iframe{
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
+
 		.right {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
+
 			.right1 {
 				width: 185px;
 				height: 67px;
@@ -205,6 +237,7 @@ iframe{
 				background-repeat: no-repeat;
 				background-size: cover;
 			}
+
 			.right2 {
 				width: 185px;
 				height: 67px;
@@ -213,6 +246,7 @@ iframe{
 				background-size: cover;
 			}
 		}
+
 		.title1 {
 			font-size: 16px;
 			font-family: PingFangSC-Medium, PingFang SC;
@@ -221,6 +255,7 @@ iframe{
 			margin-left: 12px;
 			margin-top: 12px;
 		}
+
 		.title2 {
 			font-size: 12px;
 			font-family: PingFangSC-Regular, PingFang SC;
@@ -230,10 +265,12 @@ iframe{
 			margin-top: 3px;
 		}
 	}
+
 	.zybottom {
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
+
 		.title1 {
 			font-size: 13px;
 			font-family: PingFangSC-Medium, PingFang SC;
@@ -242,6 +279,7 @@ iframe{
 			margin-left: 12px;
 			margin-top: 10px;
 		}
+
 		.title2 {
 			font-size: 11px;
 			font-family: PingFangSC-Regular, PingFang SC;
@@ -250,6 +288,7 @@ iframe{
 			margin-left: 12px;
 			margin-top: 3px;
 		}
+
 		.bottom1 {
 			width: 107px;
 			height: 68px;
@@ -264,6 +303,7 @@ iframe{
 .newsdiv {
 	width: 343px;
 	margin: 0 auto;
+
 	// margin-top: 20px;
 	.title {
 		// height: 36px;
@@ -273,8 +313,10 @@ iframe{
 		font-weight: bold;
 		color: #333333;
 	}
+
 	.newsobj1 {
 		padding-top: 10px;
+
 		.newname {
 			font-size: 16px;
 			font-family: PingFangSC-Regular, PingFang SC;
@@ -289,17 +331,20 @@ iframe{
 			line-clamp: 2;
 			-webkit-box-orient: vertical;
 		}
-		.leftimage{
+
+		.leftimage {
 			width: 343px !important;
 			height: 193px !important;
 			border-radius: 5px;
 			margin-top: 10px;
 			overflow: hidden;
 		}
+
 		.timer {
 			margin-top: 5px;
 			display: flex;
 			align-items: center;
+
 			.text {
 				margin-left: 5px;
 				font-size: 12px;
@@ -309,17 +354,20 @@ iframe{
 			}
 		}
 	}
+
 	.newsobj {
 		margin-top: 16px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+
 		.namediv {
 			width: 216px;
 			height: 72px;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
+
 			.name {
 				font-size: 16px;
 				font-family: PingFangSC-Regular, PingFang SC;
@@ -334,9 +382,11 @@ iframe{
 				line-clamp: 2;
 				-webkit-box-orient: vertical;
 			}
+
 			.timer {
 				display: flex;
 				align-items: center;
+
 				.text {
 					margin-left: 5px;
 					font-size: 12px;
@@ -346,6 +396,7 @@ iframe{
 				}
 			}
 		}
+
 		.imageright {
 			width: 125px !important;
 			height: 78px !important;
@@ -353,7 +404,8 @@ iframe{
 			overflow: hidden;
 		}
 	}
-	.timerimage{
+
+	.timerimage {
 		width: 14px !important;
 		height: 14px !important;
 	}
@@ -363,6 +415,7 @@ iframe{
 	width: 343px;
 	margin: 0 auto;
 	margin-top: 30px;
+
 	.title {
 		margin-bottom: 16px;
 		display: flex;
@@ -372,6 +425,7 @@ iframe{
 		font-family: PingFangSC-Medium, PingFang SC;
 		font-weight: bold;
 		color: #333333;
+
 		.moretext {
 			margin-left: auto;
 			font-size: 12px;
@@ -379,14 +433,17 @@ iframe{
 			font-weight: 400;
 			color: #aaaaaa;
 		}
+
 		.rightgo {
 			margin-left: 5px;
 			width: 6px;
 			height: 9px;
 		}
 	}
+
 	.anliobj1 {
 		margin-bottom: 16px;
+
 		.newname {
 			font-size: 16px;
 			font-family: PingFangSC-Regular, PingFang SC;
@@ -401,17 +458,20 @@ iframe{
 			line-clamp: 2;
 			-webkit-box-orient: vertical;
 		}
-		.leftimage{
+
+		.leftimage {
 			width: 343px !important;
 			height: 193px !important;
 			border-radius: 5px;
 			margin-top: 10px;
 			overflow: hidden;
 		}
+
 		.timer {
 			margin-top: 5px;
 			display: flex;
 			align-items: center;
+
 			.text {
 				margin-left: 5px;
 				font-size: 12px;
@@ -420,16 +480,19 @@ iframe{
 				color: #aaaaaa;
 			}
 		}
-		.timerimage{
+
+		.timerimage {
 			width: 14px !important;
 			height: 14px !important;
 		}
 	}
+
 	.anliobj {
 		margin-bottom: 16px;
 		display: flex;
 		// align-items: center;
 		justify-content: space-between;
+
 		.namediv {
 			margin-left: 10px;
 			flex: 1;
@@ -437,6 +500,7 @@ iframe{
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
+
 			.name {
 				font-size: 16px;
 				font-family: PingFangSC-Regular, PingFang SC;
@@ -451,6 +515,7 @@ iframe{
 				line-clamp: 2;
 				-webkit-box-orient: vertical;
 			}
+
 			.desc {
 				font-size: 12px;
 				font-family: PingFangSC-Regular, PingFang SC;
@@ -465,9 +530,11 @@ iframe{
 				line-clamp: 2;
 				-webkit-box-orient: vertical;
 			}
-			.tagsdiv{
+
+			.tagsdiv {
 				margin-top: 3px;
 			}
+
 			.tags {
 				padding: 0 5px;
 				background-color: #FFF7EB;
@@ -480,9 +547,11 @@ iframe{
 				color: #EFA11F;
 				border-radius: 2px;
 			}
+
 			.timer {
 				display: flex;
 				align-items: center;
+
 				.text {
 					margin-left: 5px;
 					font-size: 12px;
@@ -492,6 +561,7 @@ iframe{
 				}
 			}
 		}
+
 		// .image {
 		// 	width: 125px !important;
 		// 	height: 78px !important;
@@ -504,18 +574,21 @@ iframe{
 			border-radius: 5px;
 			overflow: hidden;
 		}
-		.imagepro{
+
+		.imagepro {
 			width: 125px !important;
 			height: 78px !important;
 			border-radius: 5px;
 			overflow: hidden;
 		}
-		.timerimage{
+
+		.timerimage {
 			width: 14px !important;
 			height: 14px !important;
 		}
 	}
 }
+
 // 案例
 .bardiv {
 	width: 375px;
@@ -527,26 +600,31 @@ iframe{
 	background-image: url(assets/static/anli/anli_kapian.png);
 	background-repeat: no-repeat;
 	background-size: cover;
+
 	.barobj {
 		width: 170px;
 		height: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
 		.image {
 			width: 45px;
 			height: 45px;
 			border-radius: 50%;
 			overflow: hidden;
 		}
+
 		.titlename {
 			margin-left: 5px;
+
 			.name {
 				font-size: 14px;
 				font-family: PingFangSC-Medium, PingFang SC;
 				font-weight: bold;
 				color: #333333;
 			}
+
 			.desc {
 				margin-top: 3px;
 				font-size: 12px;
@@ -557,6 +635,7 @@ iframe{
 		}
 	}
 }
+
 // pdf
 .arrow {
 	height: 58px;
@@ -564,6 +643,7 @@ iframe{
 	align-items: center;
 	justify-content: center;
 }
+
 .pdf-box {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -574,8 +654,36 @@ iframe{
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
 	font-size: 0.28rem;
+
 	span {
 		width: 100%;
 	}
+}
+
+.marketingdiv {
+	width: 343px;
+	margin: 0 auto;
+
+	.van-tag {
+		padding: 2px 3px
+	}
+}
+
+.text-hide {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+.van-nav-bar .van-icon {
+	color: #666;
+	font-size: 20px;
+	font-weight: blod
+}
+
+.van-tabs__line {
+	background-color: #FFD33F
 }
 </style>

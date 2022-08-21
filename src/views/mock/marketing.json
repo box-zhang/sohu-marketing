@@ -1,0 +1,30 @@
+{
+    // 精选讲师
+    "teachersList|4": [{
+        id: "@increment",
+        userName: "@cname()",
+        userUrl: "@dataImage('60x60','png')",
+        courseName: "@cword(3, 10)",
+        "userTag|1-2": [
+            "@cword(1, 3)"
+        ]
+    }],
+    // 最新课程 newCourseList
+    "newCourseList|4": [{
+        // id: '@id()',
+        id: "@increment",
+        newCourseName: "@ctitle()",
+        newCourseImg: "@dataImage('200x120','png')",
+        userName: "@cname()"
+    }],
+    // 大师驾到 masterMsg
+    "masterMsg|3": [{
+        // id: '@id()',
+        id: "@increment",
+        masterImg: "@dataImage('100x140','png')",
+        masterName: "@cname()",
+        masterTitle: "@cword(3, 10)",
+        masterTag: "@cword(5, 8)",
+        masterIfo: "@cparagraph(1, 3)"
+    }]
+}

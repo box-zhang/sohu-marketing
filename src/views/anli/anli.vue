@@ -2,10 +2,13 @@
 	<div class="page">
 		<div class="topdiv">
 			<!-- 导航栏 -->
-			<!-- <van-nav-bar
+			<van-nav-bar
 			  title="案例"
+		  left-text=""
+		  left-arrow
+		  @click-left="onClickLeft"
 			  :border="false">
-			  </van-nav-bar> -->
+			  </van-nav-bar>
 		</div>
 		<!-- 菜单 -->
 		<div class="bardiv">
