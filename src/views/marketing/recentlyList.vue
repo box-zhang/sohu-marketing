@@ -6,8 +6,8 @@
         <van-col span="8">
           <van-image
             width="100%"
-            fit="cover"
-            position="center"
+            fit="scale-down"
+            position="cover"
             :src="item.courseUrl"
           />
         </van-col>
@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       active: '',
-      barName: '新人必学',
+      barName: '最近观看',
       watchList: [],
     }
   },
@@ -45,9 +45,8 @@ export default {
         // 精选讲师
         'watchList|8-18': [
           {
-            isShowTime: true,
+            isShowTime: false,
             isShowUser: false,
-            isShowTag: false,
             courseId: '@increment',
             courseName: '@cword(3, 30)',
             courseUrl: "@dataImage('120x80','png')",
@@ -65,7 +64,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 .van-image {
   border-radius: 5px;
   overflow: hidden;
@@ -91,14 +90,10 @@ export default {
   margin: 12px 0;
 
   .msg-r {
-    // position: absolute;
-    // bottom: 0;
-    // overflow: hidden;
-    // width: 78%;
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    width: 78%;
   }
-}
-
-.video-msg .time {
-  float: left !important;
 }
 </style>

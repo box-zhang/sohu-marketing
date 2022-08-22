@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       active: '',
-      barName: '新人必学',
+      barName: '案例解析',
       watchList: [],
     }
   },

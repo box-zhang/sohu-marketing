@@ -1,6 +1,6 @@
 <template>
   <div class="tabbar">
-    <!--  /:before-change="beforechange" -->
+    <!--  before-change="beforechange" -->
     <van-tabbar
       v-model="tabbarTempValue"
       @change="onChange"
@@ -20,7 +20,7 @@
           <img :src="tabbarTempValue == 1 ? icon1.active : icon1.inactive" />
         </template>
       </van-tabbar-item>
-      <van-tabbar-item replace to="/marketing">
+      <van-tabbar-item replace to="/anli">
         <span>培训</span>
         <template #icon="props">
           <img :src="tabbarTempValue == 2 ? icon2.active : icon2.inactive" />
@@ -57,7 +57,6 @@ export default {
   },
   created() {
     this.tabbarTempValue = this.tabbarValue
-    console.log(this.tabbarTempValue)
   },
   methods: {
     beforechange(index) {
@@ -70,9 +69,9 @@ export default {
     },
     onChange(index) {
       console.log('点击了下标：' + index)
-      // if (index == 2) {
-      //   return false
-      // }
+      if (index == 2) {
+        return false
+      }
       // this.$hxe.showToast(+index);
       this.tabbarTempValue = parseInt(index)
       console.log('下标：' + this.tabbarTempValue)

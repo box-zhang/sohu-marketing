@@ -1,5 +1,5 @@
 <template>
-  <div class="video-msg">
+  <div class="course-msg">
     <van-row>
       <van-col span="24">
         <h3>{{ info.courseName }}</h3>
@@ -9,18 +9,17 @@
     <van-row class="msg-b">
       <van-col span="24">
         <div class="msg-r">
-          <div class="msg text-hide"
-               v-if="info.isShowUser">
+          <div class="msg text-hide" v-if="info.isShowUser">
             <van-icon name="user-circle-o" />
             <span class="">讲师</span>
             <span class="gray">{{ info.courseTeacher }}</span>
           </div>
 
           <div class="time text-hide">
-            <van-icon v-if="info.isShowTime"
-                      name="clock-o" />
-            <span class="gray"
-                  v-if="info.isShowTime">{{ info.courseTime }}</span>
+            <van-icon v-if="info.isShowTime" name="clock-o" />
+            <span class="gray" v-if="info.isShowTime">{{
+              info.courseTime
+            }}</span>
           </div>
         </div>
       </van-col>
@@ -33,13 +32,13 @@ export default {
   name: 'videoMsg',
   data() {
     return {
-      info: this.courseData
+      info: this.courseData,
     }
   },
   props: {
     courseData: {
       type: Object,
-      default: {}
+      default: {},
     },
     // isShowTime: {
     //   type: String,
@@ -50,13 +49,11 @@ export default {
     //   default: ""
     // },
   },
-
-
 }
 </script>
 
 <style scoped lang="less">
-.video-msg {
+.course-msg {
   .msg-b {
     position: absolute;
     overflow: hidden;
@@ -104,9 +101,8 @@ export default {
     }
 
     span {
-      margin: 0 5px
+      margin: 0 5px;
     }
-
   }
 }
 </style>

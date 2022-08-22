@@ -6,6 +6,8 @@
                   size="small"
                   to="index">提交</van-button>
     </div>
+    <div class="mt-bar">
+
     <div class="star">
       <van-rate v-model="value"
                 :size="25"
@@ -26,6 +28,7 @@
                    placeholder="课程内容如何？学习有收获吗？快来评价一下课程吧！"
                    show-word-limit />
       </van-cell-group>
+    </div>
     </div>
   </div>
 </template>

@@ -1,71 +1,83 @@
 <template>
   <div>
     <navBar :barName="barName"></navBar>
-    <van-tabs v-model:active="active"
-              sticky>
-      <div class="marketingdiv">
-        <van-tab v-for="item in salesMsg"
-                 :title="item.cardName"
-                 :key="item.cardId">
-          <van-row gutter="10"
-                   class="video-lr"
-                   v-for="itemI in item.cardList">
-            <van-col span="8">
-              <van-image width="100%"
-                         fit="scale-down"
-                         position="cover"
-                         :src="itemI.courseUrl" />
-            </van-col>
-            <van-col span="16">
-              <courseMsg :courseData="itemI"></courseMsg>
-            </van-col>
-          </van-row>
-        </van-tab>
-      </div>
-    </van-tabs>
+    <div class="mt-bar">
+      <van-tabs v-model:active="active" sticky>
+        <div class="marketingdiv">
+          <van-tab
+            v-for="item in salesMsg"
+            :title="item.cardName"
+            :key="item.cardId"
+          >
+            <van-row
+              gutter="10"
+              class="video-lr"
+              v-for="itemI in item.cardList"
+            >
+              <van-col span="8">
+                <van-image
+                  width="100%"
+                  fit="scale-down"
+                  position="cover"
+                  :src="itemI.courseUrl"
+                />
+              </van-col>
+              <van-col span="16">
+                <courseMsg :courseData="itemI"></courseMsg>
+              </van-col>
+            </van-row>
+          </van-tab>
+        </div>
+      </van-tabs>
+    </div>
 
     <footerLine></footerLine>
   </div>
 </template>
 
 <script>
-import Mock from "mockjs";
-import courseMsg from "@/views/mkModule/courseMsg.vue";
-import navBar from "@/views/mkModule/navBar.vue";
-import footerLine from "@/views/mkModule/footerLine.vue";
+import courseMsg from '@/views/mkModule/courseMsg.vue'
+import footerLine from '@/views/mkModule/footerLine.vue'
+import navBar from '@/views/mkModule/navBar.vue'
+import Mock from 'mockjs'
 export default {
   name: 'businessTraining',
   components: {
-    courseMsg, navBar, footerLine
+    courseMsg,
+    navBar,
+    footerLine,
   },
   data() {
     return {
-      active: "",
-      barName: "销售技巧",
-      salesMsg: []
+      active: '',
+      barName: '销售技巧',
+      salesMsg: [],
     }
   },
   methods: {
     init() {
       const { salesMsg } = Mock.mock({
         // 精选讲师
-        "salesMsg|3": [{
-          cardId: "@increment",
-          cardName: "@cword(4,5)",
-          "cardList|8-16": [{
-            isShowTime: false,
-            isShowUser: true,
-            courseId: "@increment",
-            courseName: "@cword(3, 30)",
-            courseUrl: "@dataImage('120x80','png')",
-            courseTeacher: "@cname()",
-            courseTime: "@date('yyyy.MM.dd')"
-          }]
-
-        }],
-      });
-      this.salesMsg = salesMsg;
-    }
+        'salesMsg|3': [
+          {
+            cardId: '@increment',
+            cardName: '@cword(4,5)',
+            'cardList|8-16': [
+              {
+                isShowTime: false,
+                isShowUser: true,
+                courseId: '@increment',
+                courseName: '@cword(3, 30)',
+                courseUrl: "@dataImage('120x80','png')",
+                courseTeacher: '@cname()',
+                courseTime: "@date('yyyy.MM.dd')",
+              },
+            ],
+          },
+        ],
+      })
+      this.salesMsg = salesMsg
+    },
   },
   mounted() {
     this.init()
@@ -73,7 +85,7 @@ export default {
 }
 </script>
 
-<style  lang="less">
+<style lang="less">
 .van-image {
   border-radius: 5px;
   overflow: hidden;
@@ -89,11 +101,11 @@ export default {
 }
 
 .van-tabs__line {
-  width: 30px
+  width: 30px;
 }
 
 .van-tab {
-  font-size: 14px
+  font-size: 14px;
 }
 
 .video-lr {

@@ -2,7 +2,7 @@
   <div>
     <navBar :barName="barName"></navBar>
     <van-tabs v-model:active="active"
-              sticky>
+              sticky class="mt-bar">
       <div class="marketingdiv">
         <van-tab v-for="item in businessTrainingMsg"
                  :title="item.cardName"

@@ -3,13 +3,15 @@
     <div class="topdiv">
       <navBar :barName="barName"></navBar>
     </div>
-    <div class="marketingdiv">
+    <div class="marketingdiv mt-bar">
       <!-- 新人必学 -->
       <van-row class="hint">
         <van-col span="16">
           <div class="hint-img">
-            <img src="@/assets/static/peixun/icon_xinrenkehceng@2x.png"
-                 alt="">
+            <img
+              src="@/assets/static/peixun/icon_xinrenkehceng@2x.png"
+              alt=""
+            />
           </div>
           <div class="hint-text">
             <h3>新人课程</h3>
@@ -17,7 +19,7 @@
           </div>
         </van-col>
         <van-col span="8">
-          <button>立即进入</button>
+          <router-link to="/learn"><button>立即进入</button></router-link>
         </van-col>
       </van-row>
       <div class="block20"></div>
@@ -27,27 +29,27 @@
           <h3>第一步：完成新人课程</h3>
           <p class="step-hint">
             <span class="color333">
-              <van-icon name="warning-o"
-                        color="#666" />提示
-            </span> 请合理规划时间完成新人课程
+              <van-icon name="warning-o" color="#666" />提示
+            </span>
+            请合理规划时间完成新人课程
           </p>
         </van-step>
         <van-step>
           <h3>第二步：理论考试</h3>
           <p class="step-hint">
             <span class="color333">
-              <van-icon name="warning-o"
-                        color="#666" />提示
-            </span> 完成新人必学课程后将在线上进行考试
+              <van-icon name="warning-o" color="#666" />提示
+            </span>
+            完成新人必学课程后将在线上进行考试
           </p>
         </van-step>
         <van-step>
           <h3>第三步：新人天考核</h3>
           <p class="step-hint">
             <span class="color333">
-              <van-icon name="warning-o"
-                        color="#666" />提示
-            </span> 理论考试完成后将在线下进行新人提案考核
+              <van-icon name="warning-o" color="#666" />提示
+            </span>
+            理论考试完成后将在线下进行新人提案考核
           </p>
         </van-step>
       </van-steps>
@@ -56,20 +58,18 @@
 </template>
 
 <script>
-import navBar from "@/views/mkModule/navBar.vue";
+import navBar from '@/views/mkModule/navBar.vue'
 export default {
   name: 'marketing',
   components: {
-    navBar
+    navBar,
   },
   data() {
     return {
-      active: "",
-      barName: "新人必学",
-
+      active: '',
+      barName: '新人必学',
     }
   },
-
 }
 </script>
 
@@ -77,7 +77,7 @@ export default {
 .step-hint {
   position: relative;
   padding: 10px 10px 10px 34px;
-  background: #F9F9F9;
+  background: #f9f9f9;
   color: #999;
 
   .van-icon-warning-o {
@@ -86,8 +86,6 @@ export default {
     left: 15px;
     font-size: 14px;
   }
-
-
 }
 
 .van-step__circle,
@@ -95,14 +93,14 @@ export default {
   display: block;
   width: 7px;
   height: 7px;
-  background-color: #FFD33F;
+  background-color: #ffd33f;
   border-radius: 50%;
   content: '';
 }
 
 .van-step__icon--active,
 .van-step__title--active {
-  color: #999
+  color: #999;
 }
 
 .van-step__icon,
@@ -111,18 +109,18 @@ export default {
 }
 
 .van-steps h3 {
-  color: #333
+  color: #333;
 }
 
 .color333 {
-  color: #333
+  color: #333;
 }
 
 .van-step--vertical:not(:last-child)::after {
-  border: 0
+  border: 0;
 }
 
 .hint {
-  background: #F6F6F6
+  background: #f6f6f6;
 }
 </style>

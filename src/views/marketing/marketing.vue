@@ -2,7 +2,7 @@
  * @Author: boxZhang
  * @Date: 2022-08-18 16:44:07
  * @LastEditors: boxZhang
- * @LastEditTime: 2022-08-19 15:10:19
+ * @LastEditTime: 2022-08-22 15:13:21
  * @Description: 好好做人，谨慎敲码
  * @FilePath: \workspace\sohu_project\sohu-marketing\src\views\marketing\marketing.vue
 -->
@@ -10,32 +10,34 @@
   <div class="page">
     <div class="topdiv">
       <navBar :barName="barName"></navBar>
+      <div class="icon">
+        <router-link to="/recentlyList"
+          ><span>最近观看</span>
+          <img src="@/assets/static/peixun/icon_xiazai@2x.png" alt=""
+        /></router-link>
+      </div>
     </div>
-    <div class="marketingdiv">
+    <div class="marketingdiv mt-bar">
       <!-- 轮播 -->
-      <van-swipe class="my-swipe"
-                 :autoplay="5000"
-                 indicator-color="white">
+      <van-swipe class="my-swipe" :autoplay="5000" indicator-color="white">
         <van-swipe-item v-for="item in marketingSwipeList">
-          <img :src="item.imgUrl"
-               :alt="item.title">
+          <img :src="item.imgUrl" :alt="item.title" />
         </van-swipe-item>
       </van-swipe>
-      <!-- 热点图标 -->
-      <van-grid :column-num="5"
-                :gutter="2"
-                :border="false">
-        <van-grid-item v-for="item in tabList"
-                       :icon="item.iconUrl"
-                       :text="item.title"
-                       to="/" />
+      <!-- 5个快捷入口 图标 -->
+      <van-grid :column-num="5" :gutter="2" :border="false">
+        <van-grid-item
+          v-for="item in tabList"
+          :icon="item.iconUrl"
+          :text="item.title"
+          :to="item.router"
+        />
       </van-grid>
       <!-- 新人必学 -->
       <van-row class="hint">
         <van-col span="16">
           <div class="hint-img">
-            <img src="@/assets/static/peixun/icon-new.png"
-                 alt="">
+            <img src="@/assets/static/peixun/icon_xinrenbixue@2x.png" alt="" />
           </div>
           <div class="hint-text">
             <h3>新人必学</h3>
@@ -43,27 +45,30 @@
           </div>
         </van-col>
         <van-col span="8">
-          <button>立即进入</button>
+          <router-link to="/learnStep"><button>立即进入</button></router-link>
         </van-col>
       </van-row>
       <!-- 精选讲师 -->
       <div class="m-move-list">
         <mkTitle :data="teachersListMsg"></mkTitle>
-        <van-swipe :loop="false"
-                   :width="150"
-                   :show-indicators="false">
-          <van-swipe-item v-for="item in teachersListMsg.teachersLists"
-                          :key="item.id">
+        <van-swipe :loop="false" :width="150" :show-indicators="false">
+          <van-swipe-item
+            v-for="item in teachersListMsg.teachersLists"
+            :key="item.id"
+          >
             <div class="item-in">
-              <van-image fit="cover"
-                         round
-                         position="center"
-                         :src="item.userUrl" />
+              <van-image
+                fit="cover"
+                round
+                position="center"
+                :src="item.userUrl"
+              />
               <p class="name">{{ item.courseTeacher }}</p>
               <p class="introduce">{{ item.courseName }}</p>
               <div class="tag">
-                <van-tag v-for="i in item.userTag"
-                         type="primary">{{ i }}</van-tag>
+                <van-tag v-for="i in item.userTag" type="primary">{{
+                  i
+                }}</van-tag>
               </div>
             </div>
           </van-swipe-item>
@@ -72,12 +77,11 @@
       <!-- 最新课程 -->
       <div class="course">
         <mkTitle :data="newCourseMsg"></mkTitle>
-        <van-grid :border="false"
-                  :column-num="2"
-                  :gutter="8"
-                  :center="false">
-          <van-grid-item v-for="item in newCourseMsg.newCourseList"
-                         :key="item.id">
+        <van-grid :border="false" :column-num="2" :gutter="8" :center="false">
+          <van-grid-item
+            v-for="item in newCourseMsg.newCourseList"
+            :key="item.id"
+          >
             <van-image :src="item.courseImg" />
             <courseMsg :courseData="item"></courseMsg>
           </van-grid-item>
@@ -86,12 +90,13 @@
       <!-- 大咖驾到 -->
       <div class="master">
         <mkTitle :data="masterMsg"></mkTitle>
-        <van-grid direction="horizontal"
-                  :column-num="1"
-                  :border="false"
-                  :center="false">
-          <van-grid-item v-for="item in masterMsg"
-                         :key="item.id">
+        <van-grid
+          direction="horizontal"
+          :column-num="1"
+          :border="false"
+          :center="false"
+        >
+          <van-grid-item v-for="item in masterMsg" :key="item.id">
             <van-row :gutter="10">
               <van-col span="8">
                 <van-image :src="item.masterImg" />
@@ -111,123 +116,131 @@
 </template>
 
 <script>
-import mkTitle from "@/views/mkModule/mTitle.vue";
-import courseMsg from "@/views/mkModule/courseMsg.vue";
-import navBar from "@/views/mkModule/navBar.vue";
-import footerLine from "@/views/mkModule/footerLine.vue";
-import Mock from "mockjs";
+import courseMsg from '@/views/mkModule/courseMsg.vue'
+import footerLine from '@/views/mkModule/footerLine.vue'
+import mkTitle from '@/views/mkModule/mTitle.vue'
+import navBar from '@/views/mkModule/navBar.vue'
+import Mock from 'mockjs'
 export default {
   name: 'marketing',
   components: {
-    mkTitle, courseMsg, navBar, footerLine
+    mkTitle,
+    courseMsg,
+    navBar,
+    footerLine,
   },
   data() {
     return {
-      active: "",
-      barName: "培训",
+      active: '',
+      barName: '培训',
       marketingSwipeList: [
         {
-          title: "图片1",
-          imgUrl: require('@/assets/static/peixun/nav-icon1.png')
+          title: '图片1',
+          imgUrl: require('@/assets/static/peixun/nav-icon1.png'),
         },
         {
-          title: "图片2",
-          imgUrl: require('@/assets/static/peixun/nav-icon2.png')
+          title: '图片2',
+          imgUrl: require('@/assets/static/peixun/nav-icon2.png'),
         },
         {
-          title: "图片3",
-          imgUrl: require('@/assets/static/peixun/nav-icon3.png')
-        }
+          title: '图片3',
+          imgUrl: require('@/assets/static/peixun/nav-icon3.png'),
+        },
       ],
       tabList: [
         {
-          title: "业务培训",
-          iconUrl: require('@/assets/static/peixun/nav-icon1.png')
+          title: '业务培训',
+          iconUrl: require('@/assets/static/peixun/icon_yewupeixun@2x.png'),
+          router: '/bTraining',
         },
         {
-          title: "销售技巧",
-          iconUrl: require('@/assets/static/peixun/nav-icon2.png')
+          title: '销售技巧',
+          iconUrl: require('@/assets/static/peixun/icon_xiaoshoujiqiao@2x.png'),
+          router: '/sales',
         },
         {
-          title: "案例解析",
-          iconUrl: require('@/assets/static/peixun/nav-icon3.png')
+          title: '案例解析',
+          iconUrl: require('@/assets/static/peixun/icon_anlijiexi@2x.png'),
+          router: '/anliList',
         },
         {
-          title: "内部讲师",
-          iconUrl: require('@/assets/static/peixun/nav-icon4.png')
+          title: '内部讲师',
+          iconUrl: require('@/assets/static/peixun/icon_neibujiangshi@2x.png'),
+          router: '/teacherList',
         },
         {
-          title: "大咖驾到",
-          iconUrl: require('@/assets/static/peixun/nav-icon5.png')
-        }
+          title: '大咖驾到',
+          iconUrl: require('@/assets/static/peixun/icon_dakajiadao@2x.png'),
+          router: '/masters',
+        },
       ],
       teachersListMsg: {
         title: '精选讲师',
         isMore: true,
         toUrl: '',
-        teachersLists: []
+        teachersLists: [],
       },
       newCourseMsg: {
         title: '最新课程',
         isMore: false,
         toUrl: '',
-        newCourseList: []
+        newCourseList: [],
       },
       masterMsg: {
         title: '大咖驾到',
         isMore: true,
         toUrl: '',
-        masterMsgList: []
-      }
+        masterMsgList: [],
+      },
     }
   },
   methods: {
     init() {
       const { teachersList, newCourseList, masterMsg } = Mock.mock({
         // 精选讲师
-        "teachersList|4": [{
-          isShowTime: false,
-          isShowUser: true,
-          isShowTag: false,
-          id: "@increment",
-          courseTeacher: "@cname()",
-          userUrl: "@dataImage('60x60','png')",
-          courseName: "@cword(3, 10)",
-          "userTag|1-2": [
-            "@cword(1, 3)"
-          ]
-        }],
-        // 最新课程 newCourseList
-        "newCourseList|4": [
+        'teachersList|4': [
           {
             isShowTime: false,
             isShowUser: true,
             isShowTag: false,
-            id: "@increment",
-            courseName: "@ctitle()",
+            id: '@increment',
+            courseTeacher: '@cname()',
+            userUrl: "@dataImage('60x60','png')",
+            courseName: '@cword(3, 10)',
+            'userTag|1-2': ['@cword(1, 3)'],
+          },
+        ],
+        // 最新课程 newCourseList
+        'newCourseList|4': [
+          {
+            isShowTime: false,
+            isShowUser: true,
+            isShowTag: false,
+            id: '@increment',
+            courseName: '@ctitle()',
             courseImg: "@dataImage('200x120','png')",
-            courseTeacher: "@cname()"
-          }
+            courseTeacher: '@cname()',
+          },
         ],
         // 大师驾到 masterMsg
-        "masterMsg|3": [
+        'masterMsg|3': [
           {
             isShowTime: false,
             isShowUser: true,
             isShowTag: false,
-            id: "@increment",
+            id: '@increment',
             masterImg: "@dataImage('100x140','png')",
-            masterName: "@cname()",
-            masterTitle: "@cword(3, 10)",
-            masterTag: "@cword(5, 8)",
-            masterIfo: "@cparagraph(1, 3)"
-          }
-        ]
-      });
-      this.teachersListMsg.teachersLists = teachersList;
-      this.newCourseMsg.newCourseList = newCourseList;
-      this.masterMsg = masterMsg;
-    }
+            masterName: '@cname()',
+            masterTitle: '@cword(3, 10)',
+            masterTag: '@cword(5, 8)',
+            masterIfo: '@cparagraph(1, 3)',
+          },
+        ],
+      })
+      this.teachersListMsg.teachersLists = teachersList
+      this.newCourseMsg.newCourseList = newCourseList
+      this.masterMsg = masterMsg
+    },
   },
   mounted() {
     this.init()
@@ -236,6 +249,23 @@ export default {
 </script>
 
 <style lang="less">
+.topdiv {
+  position: relative;
+  .icon {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: 18px;
+    margin-top: -10px;
+    width: 20px;
+    height: 20px;
+    font-size: 0;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
 .my-swipe {
   margin-top: 2px;
   border-radius: 5px;
@@ -252,7 +282,7 @@ export default {
 .hint {
   position: relative;
   padding: 10px;
-  background: #FFF8DF;
+  background: #fff8df;
   border-radius: 5px;
 
   .hint-img {
@@ -263,7 +293,7 @@ export default {
     width: 42px;
 
     img {
-      width: 100%
+      width: 100%;
     }
   }
 
@@ -278,17 +308,17 @@ export default {
     margin-top: -15px;
     padding: 0 5px;
     font-weight: 600;
-    color: #EFA11F;
+    color: #efa11f;
     line-height: 28px;
-    font-size: 16px;
-    background: #FFF8DE;
+    font-size: 14px;
+    background: #fff8de;
     border-radius: 3px;
-    border: 1px solid #EFA11F;
+    border: 1px solid #efa11f;
   }
 
   h3,
   p {
-    margin: 2px 0
+    margin: 2px 0;
   }
 }
 
@@ -307,12 +337,12 @@ export default {
     }
 
     &.introduce {
-      color: #777
+      color: #777;
     }
   }
 
   .van-swipe {
-    overflow: initial
+    overflow: initial;
   }
 
   .van-swipe-item {
@@ -338,29 +368,26 @@ export default {
     margin: 0 2px;
     padding: 3px 6px;
     border-radius: 4px;
-    color: #EFA11F;
+    color: #efa11f;
     font-weight: bold;
-    background-color: #FFF7EB;
+    background-color: #fff7eb;
     letter-spacing: -1px;
   }
 
   .tag {
-    margin: 10px 0
+    margin: 10px 0;
   }
 }
 
-
 .course,
 .master {
-
   h3,
   p {
     width: 100%;
-    text-align: left
+    text-align: left;
   }
 
   h3 {
-
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -377,11 +404,11 @@ export default {
   }
 
   .video-msg .msg {
-    width: 100%
+    width: 100%;
   }
 
   .video-msg h3 {
-    margin: 5px
+    margin: 5px;
   }
 
   .video-msg .msg-b {
@@ -391,7 +418,7 @@ export default {
 
   .van-grid {
     padding-left: 0 !important;
-    margin-right: -8px
+    margin-right: -8px;
   }
 
   .van-grid-item__content {
@@ -401,7 +428,7 @@ export default {
 
 .master {
   .van-row {
-    width: 100%
+    width: 100%;
   }
 
   .van-grid-item {
@@ -415,21 +442,21 @@ export default {
   }
 
   h3 {
-    margin: 0
+    margin: 0;
   }
 
   .van-tag {
     margin-top: 15px;
     color: #777;
-    background: #F3F3F3;
+    background: #f3f3f3;
   }
 
   .van-grid-item__content {
-    padding: 0
+    padding: 0;
   }
 }
 
-.hint,
+// .hint,
 .m-move-list,
 .course,
 .master {
@@ -437,6 +464,6 @@ export default {
 }
 
 .gray {
-  color: #aaa
+  color: #aaa;
 }
 </style>
