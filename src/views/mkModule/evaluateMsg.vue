@@ -21,16 +21,23 @@
         <van-button type="primary"
                     to="/"
                     size="small"
-                    icon-position="right">发表评价</van-button>
+                    icon-position="right"
+                    disabled>已评价</van-button>
+        <van-button type="primary"
+                    to="/"
+                    size="small"
+                    icon-position="right"
+                    v-if="false">发表评价</van-button>
       </router-link>
     </div>
     <div class="evaluate-list mb-20">
       <h3>全部评价</h3>
-      <!-- <div v-for="item in evaluateList"
-           :key="item.cardId">
+      <div v-for="item in evaluateList"
+           :key="item.cardId"
+           class="e-item">
         <van-row>
           <van-col span="16">
-            <p>{{ item.cardName }}</p>
+            <p class="e-name">{{ item.cardName }}</p>
           </van-col>
           <van-col span="8">
             <van-rate v-model="value"
@@ -42,25 +49,30 @@
                       readonly />
           </van-col>
         </van-row>
-        <p></p>
-        <p>{{ item.cardContent }}</p>
-      </div> -->
+        <p class="e-time">{{ item.cardTime }}</p>
+        <p class="e-content">{{ item.cardContent }}</p>
+      </div>
 
       <p class="evaluate-no"
-         v-if="true">暂无评价，快来发表你的想法！</p>
+         v-if="false">暂无评价，快来发表你的想法！</p>
     </div>
+    <footerLine></footerLine>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
 import Mock from 'mockjs'
+import footerLine from '@/views/mkModule/footerLine.vue'
 export default {
   name: 'evaluateMsg',
   data() {
     return {
-      evaluateList
+      evaluateList: []
     }
+  },
+  components: {
+    footerLine,
   },
   methods: {
     init() {
@@ -70,7 +82,6 @@ export default {
           {
             cardId: '@increment',
             cardName: '@cword(4)',
-            cardName: '@cword(3, 30)',
             cardContent: '@cparagraph()',
             cardTime: "@date('yyyy.MM.dd')",
           },
@@ -92,6 +103,7 @@ export default {
 <style lang="less" scope>
 .evaluate {
   position: relative;
+
 
   .num {
     margin-right: 20px;
@@ -119,6 +131,11 @@ export default {
     border-color: #fff7eb;
   }
 
+  .van-button--disabled {
+    background-color: transparent;
+    border-color: transparent
+  }
+
   &.e-ed {
     .num {
       color: #FD7649
@@ -135,6 +152,30 @@ export default {
     padding: 50px;
     text-align: center;
     color: #aaa;
+  }
+
+  .e-item {
+    padding: 5px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee
+  }
+
+  .e-content {
+    margin: 5px 0;
+  }
+
+  .e-name,
+  .e-time {
+    margin: 0
+  }
+
+  .e-name {
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .e-time {
+    color: #999
   }
 }
 </style>
