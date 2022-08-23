@@ -7,16 +7,15 @@
     <!-- 每次进入刷新 -->
     <router-view v-if="!$route.meta.keepAlive"></router-view>
     <!-- 底部标签导航 -->
-    <tabbar v-if="fishowtab" :tabbarValue="tabbarTempValue"></tabbar>
+    <tabbar v-if="fishowtab"
+            :tabbarValue="tabbarTempValue"></tabbar>
     <!-- 全局ActionSheet对象,用于在非狐小e环境 -->
-    <van-action-sheet
-      :value="show"
-      @input="setShowActionSheet($event)"
-      :actions="actions"
-      @select="onSelect"
-      :title="title"
-      close-on-click-action
-    />
+    <van-action-sheet :value="show"
+                      @input="setShowActionSheet($event)"
+                      :actions="actions"
+                      @select="onSelect"
+                      :title="title"
+                      close-on-click-action />
   </div>
 </template>
 <script>
@@ -121,6 +120,7 @@ export default {
 html {
   overflow-x: hidden;
 }
+
 body {
   background-color: #ffffff !important;
   overflow-x: hidden;
@@ -706,15 +706,13 @@ iframe {
 .mb-20 {
   margin-bottom: 20px;
 }
+
 .mtb-10 {
   margin: 10px 0;
 }
-// .van-image {
-//   border-radius: 5px;
-//   overflow: hidden;
-// }
+
 .mt-bar {
   margin-top: 42px;
-  padding-top: 1px;
+  padding-top: 0.1px;
 }
 </style>

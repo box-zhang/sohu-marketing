@@ -13,8 +13,9 @@
     </van-col>
     <van-col span="6">
       <router-link :to="info.toUrl">
-        <div class="st-icon-pandora m-more" v-if="info.isMore">
-          更多 <span class="st-icon-pandora">></span>
+        <div class="st-icon-pandora m-more"
+             v-if="info.isMore">
+          更多 <span class="st-icon-pandora"></span>
         </div>
       </router-link>
     </van-col>

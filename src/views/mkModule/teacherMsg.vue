@@ -10,16 +10,16 @@
   <div class="teacher-text">
     <h2>{{ info.tName }}</h2>
     <div>{{ info.tText }}</div>
-    <div class="tag-box" v-if="info.isShowTitle">
-      <van-tag type="primary" class="gray">{{ info.tTitle }}</van-tag>
+    <div class="tag-box"
+         v-if="info.isShowTitle">
+      <van-tag type="primary"
+               class="gray">{{ info.tTitle }}</van-tag>
     </div>
-    <div class="tag-box" v-if="info.isShowTags">
-      <van-tag
-        type="primary"
-        v-for="(item, index) in info.tTags"
-        :key="index"
-        >{{ item }}</van-tag
-      >
+    <div class="tag-box"
+         v-if="info.isShowTags">
+      <van-tag type="primary"
+               v-for="(item, index) in info.tTags"
+               :key="index">{{ item }}</van-tag>
     </div>
   </div>
 </template>
@@ -46,6 +46,7 @@ export default {
   h2 {
     margin-top: 0;
   }
+
   .gray {
     margin: 20px 0;
     padding: 3px 6px;
@@ -53,5 +54,10 @@ export default {
     color: #777;
     line-height: 16px;
   }
+
+  .tag-box {
+    margin: 20px 0;
+  }
+
 }
 </style>

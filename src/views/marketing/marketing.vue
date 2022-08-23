@@ -13,25 +13,29 @@
     </div>
     <div class="marketingdiv mt-bar">
       <!-- 轮播 -->
-      <van-swipe class="my-swipe" :autoplay="5000" indicator-color="white">
+      <van-swipe class="my-swipe"
+                 :autoplay="5000"
+                 indicator-color="white">
         <van-swipe-item v-for="item in marketingSwipeList">
-          <img :src="item.imgUrl" :alt="item.title" />
+          <img :src="item.imgUrl"
+               :alt="item.title" />
         </van-swipe-item>
       </van-swipe>
       <!-- 5个快捷入口 图标 -->
-      <van-grid :column-num="5" :gutter="2" :border="false">
-        <van-grid-item
-          v-for="item in tabList"
-          :icon="item.iconUrl"
-          :text="item.title"
-          :to="item.router"
-        />
+      <van-grid :column-num="5"
+                :gutter="2"
+                :border="false">
+        <van-grid-item v-for="item in tabList"
+                       :icon="item.iconUrl"
+                       :text="item.title"
+                       :to="item.router" />
       </van-grid>
       <!-- 新人必学 -->
       <van-row class="hint">
         <van-col span="16">
           <div class="hint-img">
-            <img src="@/assets/static/peixun/icon_xinrenbixue@2x.png" alt="" />
+            <img src="@/assets/static/peixun/icon_xinrenbixue@2x.png"
+                 alt="" />
           </div>
           <div class="hint-text">
             <h3>新人必学</h3>
@@ -45,39 +49,39 @@
       <!-- 精选讲师 -->
       <div class="m-move-list">
         <mkTitle :data="teachersListMsg"></mkTitle>
-        <van-swipe :loop="false" :width="150" :show-indicators="false">
-          <van-swipe-item
-            v-for="item in teachersListMsg.teachersLists"
-            :key="item.id"
-          >
+        <van-swipe :loop="false"
+                   :width="150"
+                   :show-indicators="false">
+          <van-swipe-item v-for="item in teachersListMsg.teachersLists"
+                          :key="item.id">
             <router-link to="/teacherIn">
               <div class="item-in">
-                <van-image
-                  fit="cover"
-                  round
-                  position="center"
-                  :src="item.userUrl"
-                />
+                <van-image fit="cover"
+                           round
+                           position="center"
+                           :src="item.userUrl" />
                 <p class="name">{{ item.courseTeacher }}</p>
                 <p class="introduce">{{ item.courseName }}</p>
                 <div class="tag">
-                  <van-tag v-for="i in item.userTag" type="primary">{{
-                    i
-                  }}</van-tag>
+                  <van-tag v-for="i in item.userTag"
+                           type="primary">{{
+                               i
+                           }}</van-tag>
                 </div>
-              </div></router-link
-            >
+              </div>
+            </router-link>
           </van-swipe-item>
         </van-swipe>
       </div>
       <!-- 最新课程 -->
       <div class="course">
         <mkTitle :data="newCourseMsg"></mkTitle>
-        <van-grid :border="false" :column-num="2" :gutter="8" :center="false">
-          <van-grid-item
-            v-for="item in newCourseMsg.newCourseList"
-            :key="item.id"
-          >
+        <van-grid :border="false"
+                  :column-num="2"
+                  :gutter="8"
+                  :center="false">
+          <van-grid-item v-for="item in newCourseMsg.newCourseList"
+                         :key="item.id">
             <router-link to="/courseIn">
               <van-image :src="item.courseImg" />
               <courseMsg :courseData="item"></courseMsg>
@@ -88,13 +92,12 @@
       <!-- 大咖驾到 -->
       <div class="master">
         <mkTitle :data="masterMsg"></mkTitle>
-        <van-grid
-          direction="horizontal"
-          :column-num="1"
-          :border="false"
-          :center="false"
-        >
-          <van-grid-item v-for="item in masterMsg" :key="item.id">
+        <van-grid direction="horizontal"
+                  :column-num="1"
+                  :border="false"
+                  :center="false">
+          <van-grid-item v-for="item in masterMsg"
+                         :key="item.id">
             <router-link to="/teacherIn">
               <van-row :gutter="10">
                 <van-col span="8">
@@ -257,14 +260,18 @@ export default {
 
 <style lang="less">
 .marketingdiv {
+
   a h2,
   a h3 {
     color: #333;
   }
-  a p {
+
+  a p,
+  a div {
     color: #666;
   }
 }
+
 .my-swipe {
   margin-top: 2px;
   border-radius: 5px;
@@ -361,6 +368,10 @@ export default {
       padding: 20px 5px;
       box-shadow: 0px 6px 15px 0px rgba(193, 193, 193, 0.29);
       border-radius: 10px;
+
+      .van-image--round {
+        border-radius: 50%;
+      }
     }
   }
 
@@ -381,6 +392,7 @@ export default {
 
 .course,
 .master {
+
   h3,
   p {
     width: 100%;
