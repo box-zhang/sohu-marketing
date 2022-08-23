@@ -1,25 +1,27 @@
 <template>
   <div>
     <navBar :bar="barMsg"></navBar>
-    <van-tabs v-model:active="active" sticky class="mt-bar">
+    <van-tabs v-model:active="active"
+              sticky
+              class="mt-bar">
       <div class="marketingdiv">
-        <van-tab
-          v-for="item in businessTrainingMsg"
-          :title="item.cardName"
-          :key="item.cardId"
-        >
-          <van-row gutter="10" class="video-lr" v-for="item in item.cardList">
-            <van-col span="8">
-              <van-image
-                width="100%"
-                fit="scale-down"
-                position="cover"
-                :src="item.courseUrl"
-              />
-            </van-col>
-            <van-col span="16">
-              <courseMsg :courseData="item"></courseMsg>
-            </van-col>
+        <van-tab v-for="item in businessTrainingMsg"
+                 :title="item.cardName"
+                 :key="item.cardId">
+          <van-row gutter="10"
+                   class="video-lr"
+                   v-for="item in item.cardList">
+            <router-link to="/courseIn">
+              <van-col span="8">
+                <van-image width="100%"
+                           fit="scale-down"
+                           position="cover"
+                           :src="item.courseUrl" />
+              </van-col>
+              <van-col span="16">
+                <courseMsg :courseData="item"></courseMsg>
+              </van-col>
+            </router-link>
           </van-row>
         </van-tab>
       </div>

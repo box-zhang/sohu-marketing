@@ -305,7 +305,7 @@ export default {
   }
 
   .hint-text {
-    padding-left: 54px;
+    padding-left: 62px;
   }
 
   button {

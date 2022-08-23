@@ -66,6 +66,7 @@ export default {
 
   .msg-r {
     overflow: hidden;
+    font-size: 12px;
   }
 
   h3 {
@@ -88,6 +89,7 @@ export default {
     float: right;
     padding-left: 10px;
     text-align: right;
+    font-size: 12px;
   }
 
   .msg,
@@ -95,6 +97,8 @@ export default {
     position: relative;
     // margin-bottom: 5px;
     line-height: 18px;
+
+    font-size: 12px;
 
     .van-icon {
       position: absolute;

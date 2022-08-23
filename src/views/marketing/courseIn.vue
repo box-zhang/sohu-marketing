@@ -138,7 +138,11 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less" >
+.van-tab__text--ellipsis {
+  font-size: 16px;
+}
+
 .course-in {
   .course-msg {
     font-size: 14px;
@@ -146,10 +150,11 @@ export default {
 
     .msg-r {
       overflow: hidden;
+      font-size: 12px;
     }
 
     h2 {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 26px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -228,6 +233,11 @@ export default {
 
     h3 {
       margin: 5px 0;
+      font-size: 14px
+    }
+
+    p {
+      font-size: 14px;
     }
   }
 }

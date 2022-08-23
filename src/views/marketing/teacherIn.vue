@@ -3,61 +3,65 @@
     <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
       <div class=" teacher-ifo">
-        <van-image
-          fit="cover"
-          width="120px"
-          height="160px"
-          position="center"
-          src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
-        />
+        <van-image fit="cover"
+                   width="120px"
+                   height="160px"
+                   position="center"
+                   src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
         <div class="teacher-text">
           <h2>{{ teacherMsg.tName }}</h2>
           <div>{{ teacherMsg.tText }}</div>
           <div class="tag-box">
-            <van-tag
-              type="primary"
-              v-for="(item, index) in teacherMsg.tTags"
-              :key="index"
-              >{{ item }}</van-tag
-            >
+            <van-tag type="primary"
+                     v-for="(item, index) in teacherMsg.tTags"
+                     :key="index">{{ item }}</van-tag>
           </div>
         </div>
       </div>
       <div class="teacher-course">
-        <van-tabs v-model:active="activeName" scrollspy>
-          <van-tab title="课程目录" name="kcml">
+        <van-tabs v-model:active="activeName"
+                  scrollspy>
+          <van-tab title="课程目录"
+                   name="kcml">
             <div class="course-list">
-              <div
-                class="course-item"
-                v-for="item in teacherMsg.courseList"
-                :key="item.cId"
-              >
-                <van-icon name="play-circle" color="#FFD33F" />
-                <div class="course-text">
-                  <h3>{{ item.cName }}</h3>
-                  <div class="time-box">
-                    <div class="time-long">
-                      <van-icon name="clock-o" color="#aaa" />{{
-                        item.cTimeLong
-                      }}
-                    </div>
-                    <div class="time">
-                      <van-icon name="clock-o" color="#aaa" />{{ item.cTime }}
+              <div class="course-item"
+                   v-for="item in teacherMsg.courseList"
+                   :key="item.cId">
+
+                <router-link to="/courseIn">
+                  <van-icon name="play-circle"
+                            color="#FFD33F" />
+                  <div class="course-text">
+                    <h3>{{ item.cName }}</h3>
+                    <div class="time-box">
+                      <div class="time-long">
+                        <van-icon name="clock-o"
+                                  color="#aaa" />{{
+                                      item.cTimeLong
+                                  }}
+                      </div>
+                      <div class="time">
+                        <van-icon name="clock-o"
+                                  color="#aaa" />{{ item.cTime }}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </router-link>
               </div>
-              <p class="show-more">
+              <p class="show-more"
+                 v-if="false">
                 展开更多
-                <van-icon name="arrow-down" size="12" />
+                <van-icon name="arrow-down"
+                          size="12" />
               </p>
             </div>
             <div class="mb-20">
               <h2>计划课程</h2>
-              <p>马上推出某课程</p>
+              <p>马上推出某课程，敬请期待！</p>
             </div>
           </van-tab>
-          <van-tab title="讲师评价" name="jspj">
+          <van-tab title="讲师评价"
+                   name="jspj">
             <h2>讲师评价</h2>
             <evaluateMsg></evaluateMsg>
           </van-tab>
@@ -142,6 +146,7 @@ export default {
       margin-top: 0;
     }
   }
+
   .van-image {
     border-radius: 5px;
   }
@@ -223,7 +228,7 @@ export default {
   }
 
   .van-tab {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 </style>
