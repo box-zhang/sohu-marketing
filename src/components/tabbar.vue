@@ -1,3 +1,11 @@
+<!--
+ * @Author: boxZhang
+ * @Date: 2022-08-18 16:41:01
+ * @LastEditors: boxZhang
+ * @LastEditTime: 2022-08-23 10:50:16
+ * @Description: 好好做人，谨慎敲码
+ * @FilePath: \workspace\sohu_project\sohu-marketing\src\components\tabbar.vue
+-->
 <template>
   <div class="tabbar">
     <!--  before-change="beforechange" -->
@@ -20,7 +28,7 @@
           <img :src="tabbarTempValue == 1 ? icon1.active : icon1.inactive" />
         </template>
       </van-tabbar-item>
-      <van-tabbar-item replace to="/anli">
+      <van-tabbar-item replace to="/marketing">
         <span>培训</span>
         <template #icon="props">
           <img :src="tabbarTempValue == 2 ? icon2.active : icon2.inactive" />

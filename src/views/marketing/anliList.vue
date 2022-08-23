@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navBar :barName="barName"></navBar>
+    <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
       <van-row gutter="10" class="video-lr" v-for="item in watchList">
         <van-col span="8">
@@ -35,7 +35,10 @@ export default {
   data() {
     return {
       active: '',
-      barName: '案例解析',
+      barMsg: {
+        barName: '案例解析',
+        rightMsg: false,
+      },
       watchList: [],
     }
   },
@@ -65,7 +68,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .van-image {
   border-radius: 5px;
   overflow: hidden;

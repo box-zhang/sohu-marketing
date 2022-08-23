@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navBar :barName="barName"></navBar>
+    <navBar :bar="barMsg"></navBar>
     <div class="mt-bar">
       <van-tabs v-model:active="active" sticky>
         <div class="marketingdiv">
@@ -50,7 +50,10 @@ export default {
   data() {
     return {
       active: '',
-      barName: '销售技巧',
+      barMsg: {
+        barName: '销售技巧',
+        rightMsg: false,
+      },
       salesMsg: [],
     }
   },
@@ -85,7 +88,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .van-image {
   border-radius: 5px;
   overflow: hidden;

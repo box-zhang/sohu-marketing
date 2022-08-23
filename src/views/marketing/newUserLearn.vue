@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navBar :barName="barName"></navBar>
+    <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
       <van-row gutter="10" class="video-lr" v-for="item in watchList">
         <van-col span="8">
@@ -35,7 +35,10 @@ export default {
   data() {
     return {
       active: '',
-      barName: '新人必学',
+      barMsg: {
+        barName: '最近观看',
+        rightMsg: false,
+      },
       watchList: [],
     }
   },

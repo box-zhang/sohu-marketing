@@ -1,8 +1,6 @@
 <template>
   <div class="teacher-in">
-    <div class="topdiv">
-      <navBar :barName="barName"></navBar>
-    </div>
+    <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
       <van-row
         gutter="10"
@@ -10,6 +8,7 @@
         v-for="item in teacherMsg"
         :key="item.tId"
       >
+      <router-link to="/teacherIn">
         <van-col span="8">
           <van-image
             fit="cover"
@@ -20,7 +19,8 @@
         </van-col>
         <van-col span="16">
           <teacherMsg :courseData="item"> </teacherMsg>
-        </van-col>
+        </van-col></router-link>
+        </router-link>
       </van-row>
     </div>
     <footerLine></footerLine>
@@ -46,7 +46,10 @@ export default {
   data() {
     return {
       active: '',
-      barName: '内部讲师',
+      barMsg: {
+        barName: '内部讲师',
+        rightMsg: false,
+      },
       teacherMsg: {},
       activeName: '',
     }
@@ -90,12 +93,15 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .teacher-in {
   .teacher-ifo {
     margin: 20px 0;
   }
-
+  .van-image {
+    border-radius: 5px;
+    overflow: hidden;
+  }
   .teacher-item {
     position: relative;
     margin-bottom: 10px;

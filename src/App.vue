@@ -56,6 +56,7 @@ export default {
   methods: {
     //判断路由是不是需要底部导航
     showdaohang(name) {
+      console.log('点击了' + name)
       var arr = ['home', 'anli', 'marketing']
       if (arr.indexOf(name) > -1) {
         this.fishowtab = true
@@ -117,6 +118,9 @@ export default {
 </script>
 
 <style lang="less">
+html {
+  overflow-x: hidden;
+}
 body {
   background-color: #ffffff !important;
   overflow-x: hidden;
@@ -705,11 +709,12 @@ iframe {
 .mtb-10 {
   margin: 10px 0;
 }
-.van-image {
-  border-radius: 5px;
-  overflow: hidden;
-}
+// .van-image {
+//   border-radius: 5px;
+//   overflow: hidden;
+// }
 .mt-bar {
   margin-top: 42px;
+  padding-top: 1px;
 }
 </style>

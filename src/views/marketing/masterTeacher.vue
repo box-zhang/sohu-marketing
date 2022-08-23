@@ -2,15 +2,13 @@
  * @Author: boxZhang
  * @Date: 2022-08-22 10:13:56
  * @LastEditors: boxZhang
- * @LastEditTime: 2022-08-22 17:02:31
+ * @LastEditTime: 2022-08-23 16:32:59
  * @Description: 好好做人，谨慎敲码
  * @FilePath: \workspace\sohu_project\sohu-marketing\src\views\marketing\masterTeacher.vue
 -->
 <template>
   <div class="teacher-in">
-    <div class="topdiv">
-      <navBar :barName="barName"></navBar>
-    </div>
+    <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
       <van-row
         gutter="10"
@@ -18,17 +16,19 @@
         v-for="item in teacherMsg"
         :key="item.tId"
       >
-        <van-col span="8">
-          <van-image
-            fit="cover"
-            width="100%"
-            position="center"
-            :src="item.tImg"
-          />
-        </van-col>
-        <van-col span="16">
-          <teacherMsg :courseData="item"> </teacherMsg>
-        </van-col>
+        <router-link to="/teacherIn">
+          <van-col span="8">
+            <van-image
+              fit="cover"
+              width="100%"
+              position="center"
+              :src="item.tImg"
+            />
+          </van-col>
+          <van-col span="16">
+            <teacherMsg :courseData="item"> </teacherMsg>
+          </van-col>
+        </router-link>
       </van-row>
     </div>
     <footerLine></footerLine>
@@ -54,7 +54,10 @@ export default {
   data() {
     return {
       active: '',
-      barName: '大咖驾到',
+      barMsg: {
+        barName: '大咖驾到',
+        rightMsg: false,
+      },
       teacherMsg: {},
       activeName: '',
     }
@@ -98,4 +101,11 @@ export default {
 }
 </script>
 
-<style lang="less"></style>
+<style lang="less">
+.teacher-in {
+  .van-image {
+    border-radius: 5px;
+    overflow: hidden;
+  }
+}
+</style>

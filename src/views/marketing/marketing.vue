@@ -2,20 +2,14 @@
  * @Author: boxZhang
  * @Date: 2022-08-18 16:44:07
  * @LastEditors: boxZhang
- * @LastEditTime: 2022-08-22 15:13:21
+ * @LastEditTime: 2022-08-23 16:25:46
  * @Description: 好好做人，谨慎敲码
  * @FilePath: \workspace\sohu_project\sohu-marketing\src\views\marketing\marketing.vue
 -->
 <template>
   <div class="page">
     <div class="topdiv">
-      <navBar :barName="barName"></navBar>
-      <div class="icon">
-        <router-link to="/recentlyList"
-          ><span>最近观看</span>
-          <img src="@/assets/static/peixun/icon_xiazai@2x.png" alt=""
-        /></router-link>
-      </div>
+      <navBar :bar="barMsg"> </navBar>
     </div>
     <div class="marketingdiv mt-bar">
       <!-- 轮播 -->
@@ -56,21 +50,23 @@
             v-for="item in teachersListMsg.teachersLists"
             :key="item.id"
           >
-            <div class="item-in">
-              <van-image
-                fit="cover"
-                round
-                position="center"
-                :src="item.userUrl"
-              />
-              <p class="name">{{ item.courseTeacher }}</p>
-              <p class="introduce">{{ item.courseName }}</p>
-              <div class="tag">
-                <van-tag v-for="i in item.userTag" type="primary">{{
-                  i
-                }}</van-tag>
-              </div>
-            </div>
+            <router-link to="/teacherIn">
+              <div class="item-in">
+                <van-image
+                  fit="cover"
+                  round
+                  position="center"
+                  :src="item.userUrl"
+                />
+                <p class="name">{{ item.courseTeacher }}</p>
+                <p class="introduce">{{ item.courseName }}</p>
+                <div class="tag">
+                  <van-tag v-for="i in item.userTag" type="primary">{{
+                    i
+                  }}</van-tag>
+                </div>
+              </div></router-link
+            >
           </van-swipe-item>
         </van-swipe>
       </div>
@@ -82,8 +78,10 @@
             v-for="item in newCourseMsg.newCourseList"
             :key="item.id"
           >
-            <van-image :src="item.courseImg" />
-            <courseMsg :courseData="item"></courseMsg>
+            <router-link to="/courseIn">
+              <van-image :src="item.courseImg" />
+              <courseMsg :courseData="item"></courseMsg>
+            </router-link>
           </van-grid-item>
         </van-grid>
       </div>
@@ -97,16 +95,18 @@
           :center="false"
         >
           <van-grid-item v-for="item in masterMsg" :key="item.id">
-            <van-row :gutter="10">
-              <van-col span="8">
-                <van-image :src="item.masterImg" />
-              </van-col>
-              <van-col span="16">
-                <h3>{{ item.masterName }} · {{ item.masterTitle }}</h3>
-                <p>{{ item.masterIfo }}</p>
-                <van-tag type="primary">{{ item.masterTag }}</van-tag>
-              </van-col>
-            </van-row>
+            <router-link to="/teacherIn">
+              <van-row :gutter="10">
+                <van-col span="8">
+                  <van-image :src="item.masterImg" />
+                </van-col>
+                <van-col span="16">
+                  <h3>{{ item.masterName }} · {{ item.masterTitle }}</h3>
+                  <p>{{ item.masterIfo }}</p>
+                  <van-tag type="primary">{{ item.masterTag }}</van-tag>
+                </van-col>
+              </van-row>
+            </router-link>
           </van-grid-item>
         </van-grid>
       </div>
@@ -132,7 +132,14 @@ export default {
   data() {
     return {
       active: '',
-      barName: '培训',
+      barMsg: {
+        barName: '培训',
+        rightMsg: {
+          barRightText: '最近观看',
+          barRightIcon: require('@/assets/static/peixun/icon_time@2x.png'),
+          barRightUrl: '/recentlyList',
+        },
+      },
       marketingSwipeList: [
         {
           title: '图片1',
@@ -177,7 +184,7 @@ export default {
       teachersListMsg: {
         title: '精选讲师',
         isMore: true,
-        toUrl: '',
+        toUrl: '/teacherList',
         teachersLists: [],
       },
       newCourseMsg: {
@@ -189,7 +196,7 @@ export default {
       masterMsg: {
         title: '大咖驾到',
         isMore: true,
-        toUrl: '',
+        toUrl: '/masters',
         masterMsgList: [],
       },
     }
@@ -249,21 +256,13 @@ export default {
 </script>
 
 <style lang="less">
-.topdiv {
-  position: relative;
-  .icon {
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    right: 18px;
-    margin-top: -10px;
-    width: 20px;
-    height: 20px;
-    font-size: 0;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+.marketingdiv {
+  a h2,
+  a h3 {
+    color: #333;
+  }
+  a p {
+    color: #666;
   }
 }
 .my-swipe {
@@ -334,6 +333,7 @@ export default {
     &.name {
       font-size: 16px;
       font-weight: bold;
+      color: #333;
     }
 
     &.introduce {

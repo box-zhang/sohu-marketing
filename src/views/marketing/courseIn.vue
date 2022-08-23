@@ -1,16 +1,15 @@
 <template>
-  <div class="courseIn">
-    <div class="video-box">
-      <van-icon name="play-circle-o"
-                size="2rem"
-                color="white" />
+  <div class="course-in">
+    <navBar :bar="barMsg"></navBar>
+    <div class="video-box mt-bar">
+      <van-icon name="play-circle-o" size="2rem" color="white" />
     </div>
-    <van-tabs v-model:active="active"
-              scrollspy
-              sticky>
-      <van-tab v-for="item in courseDataMsg"
-               :title="item.cardName"
-               :key="item.cardId">
+    <van-tabs v-model:active="active" scrollspy sticky>
+      <van-tab
+        v-for="item in courseDataMsg"
+        :title="item.cardName"
+        :key="item.cardId"
+      >
         <div class="video-lr">
           <!-- <courseMsg :courseData="item.cardList"></courseMsg> -->
         </div>
@@ -20,45 +19,52 @@
       <!-- <courseMsg :courseData="courseDataMsg[0]"></courseMsg> -->
       <div class="course-msg mb-20">
         <h2>{{ courseDataMsg[0].courseName }}</h2>
-        <p v-if="courseDataMsg[0].isShowIntroduce">{{ courseDataMsg[0].courseIntroduce }}</p>
+        <p v-if="courseDataMsg[0].isShowIntroduce">
+          {{ courseDataMsg[0].courseIntroduce }}
+        </p>
         <div class="msg-r">
-          <div class="msg text-hide"
-               v-if="courseDataMsg[0].isShowUser">
+          <div class="msg text-hide" v-if="courseDataMsg[0].isShowUser">
             <van-icon name="user-circle-o" />
             <span class="">讲师</span>
-            <span class="gray">{{ courseDataMsg[0].courseTeacher.cTeacherName }}</span>
+            <span class="gray">{{
+              courseDataMsg[0].courseTeacher.cTeacherName
+            }}</span>
           </div>
 
           <div class="time text-hide">
-            <van-icon v-if="courseDataMsg[0].isShowTime"
-                      name="clock-o" />
-            <span class="gray"
-                  v-if="courseDataMsg[0].isShowTime">{{ courseDataMsg[0].courseTime }}</span>
+            <van-icon v-if="courseDataMsg[0].isShowTime" name="clock-o" />
+            <span class="gray" v-if="courseDataMsg[0].isShowTime">{{
+              courseDataMsg[0].courseTime
+            }}</span>
           </div>
         </div>
       </div>
       <h2>讲师介绍</h2>
       <div class="teacher-msg mb-20">
         <div class="teacher-head">
-          <van-image round
-                     width="100%"
-                     height="100%"
-                     :src="courseDataMsg[0].courseTeacher.cTeacherImg" />
+          <van-image
+            round
+            width="100%"
+            height="100%"
+            :src="courseDataMsg[0].courseTeacher.cTeacherImg"
+          />
         </div>
         <h3>{{ courseDataMsg[0].courseTeacher.cTeacherName }}</h3>
         <p>{{ courseDataMsg[0].courseTeacher.cTeacherIntroduce }}</p>
       </div>
       <h2>课程资料</h2>
       <div class="course-file mb-20">
-        <van-tag type="primary"
-                 size="medium"
-                 color="#FFF7EB"
-                 text-color="#EFA11F">PDF</van-tag>
+        <van-tag
+          type="primary"
+          size="medium"
+          color="#FFF7EB"
+          text-color="#EFA11F"
+          >PDF</van-tag
+        >
         <p class="text-hide">{{ courseDataMsg[0].courseName }}</p>
         <div class="share">
           <span class="st-icon-pandora">
-            <van-icon name="share-o"
-                      color="#555555" />
+            <van-icon name="share-o" color="#555555" />
           </span>
         </div>
       </div>
@@ -69,66 +75,73 @@
 </template>
 
 <script>
-import mkTitle from "@/views/mkModule/mTitle.vue";
-import Mock from "mockjs";
-import courseMsg from "@/views/mkModule/courseMsg.vue";
-import evaluateMsg from "@/views/mkModule/evaluateMsg.vue";
-import { ref } from 'vue';
+import courseMsg from '@/views/mkModule/courseMsg.vue'
+import evaluateMsg from '@/views/mkModule/evaluateMsg.vue'
+import mkTitle from '@/views/mkModule/mTitle.vue'
+import navBar from '@/views/mkModule/navBar.vue'
+import Mock from 'mockjs'
+import { ref } from 'vue'
 export default {
   name: 'courseIn',
   components: {
-    mkTitle, courseMsg, evaluateMsg
+    navBar,
+    mkTitle,
+    courseMsg,
+    evaluateMsg,
   },
   data() {
     return {
-      active: "",
-      value: "",
-      courseDataMsg: []
+      active: '',
+      barMsg: {
+        barName: '课程详情',
+        rightMsg: false,
+      },
+      value: '',
+      courseDataMsg: [],
     }
   },
   methods: {
     init() {
       const { courseMsg } = Mock.mock({
         // 精选讲师
-        "courseMsg|3": [{
-          cardId: "@increment",
-          cardName: "@cword(4)",
-          isShowTime: true,
-          isShowUser: true,
-          isShowIntroduce: true,
-          isShowTag: false,
-          isShowImg: false,
-          courseId: "@increment",
-          courseName: "@cword(3, 30)",
-          courseIntroduce: "@cparagraph()",
-          courseUrl: "@dataImage('120x80','png')",
-          courseTeacher: {
-            cTeacherName: "@cname()",
-            cTeacherImg: "@dataImage('80x80','png')",
-            cTeacherIntroduce: "@cparagraph()"
+        'courseMsg|3': [
+          {
+            cardId: '@increment',
+            cardName: '@cword(4)',
+            isShowTime: true,
+            isShowUser: true,
+            isShowIntroduce: true,
+            isShowTag: false,
+            isShowImg: false,
+            courseId: '@increment',
+            courseName: '@cword(3, 30)',
+            courseIntroduce: '@cparagraph()',
+            courseUrl: "@dataImage('120x80','png')",
+            courseTeacher: {
+              cTeacherName: '@cname()',
+              cTeacherImg: "@dataImage('80x80','png')",
+              cTeacherIntroduce: '@cparagraph()',
+            },
+            courseTime: "@date('yyyy.MM.dd')",
+            courseTag: '@ctitle(10, 20)',
           },
-          courseTime: "@date('yyyy.MM.dd')",
-          courseTag: "@ctitle(10, 20)"
-        }],
-      });
-      this.courseDataMsg = courseMsg;
+        ],
+      })
+      this.courseDataMsg = courseMsg
     },
     setup() {
-      const value = ref(2.5);
-      return { value };
+      const value = ref(2.5)
+      return { value }
     },
   },
   mounted() {
-    this.init(),
-      this.setup()
+    this.init(), this.setup()
   },
-
 }
 </script>
 
-<style  lang="less">
-.courseIn {
-
+<style lang="less" scoped>
+.course-in {
   .video-box {
     position: relative;
     width: 100%;
@@ -142,6 +155,9 @@ export default {
       left: 50%;
       margin-top: -1rem;
       margin-left: -1rem;
+    }
+    .van-image {
+      border-radius: 5px;
     }
   }
 
@@ -189,13 +205,12 @@ export default {
       }
 
       .van-icon-clock-o {
-        right: 2.1rem
+        right: 2.1rem;
       }
 
       span {
-        margin: 0 5px
+        margin: 0 5px;
       }
-
     }
   }
 
@@ -214,10 +229,9 @@ export default {
       position: absolute;
       right: 0;
       top: 0;
-      font-size: 18px
+      font-size: 18px;
     }
   }
-
 
   .teacher-msg {
     position: relative;
@@ -230,13 +244,12 @@ export default {
       width: 50px;
       height: 50px;
       border-radius: 50px;
-      overflow: hidden
+      overflow: hidden;
     }
 
     h3 {
-      margin: 5px 0
+      margin: 5px 0;
     }
   }
-
 }
 </style>

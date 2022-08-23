@@ -1,18 +1,29 @@
+<!--
+ * @Author: boxZhang
+ * @Date: 2022-08-22 10:13:57
+ * @LastEditors: boxZhang
+ * @LastEditTime: 2022-08-23 16:43:44
+ * @Description: 好好做人，谨慎敲码
+ * @FilePath: \workspace\sohu_project\sohu-marketing\src\views\mkModule\evaluateMsg.vue
+-->
 <template>
   <div>
     <div class="evaluate mb-20">
       <span class="num">0.0</span>
-      <van-rate v-model="value"
-                :size="25"
-                color="#ffd21e"
-                void-icon="star"
-                void-color="#eee"
-                allow-half
-                readonly />
-      <van-button type="primary"
-                  to="/"
-                  size="small"
-                  icon-position="right">发表评价</van-button>
+      <van-rate
+        v-model="value"
+        :size="25"
+        color="#ffd21e"
+        void-icon="star"
+        void-color="#eee"
+        allow-half
+        readonly
+      />
+      <router-link to="/evaluate">
+        <van-button type="primary" to="/" size="small" icon-position="right"
+          >发表评价</van-button
+        >
+      </router-link>
     </div>
     <div class="evaluate-list mb-20">
       <h3>全部评价</h3>
@@ -24,7 +35,6 @@
 <script>
 export default {
   name: 'evaluateMsg',
-
 }
 </script>
 
@@ -36,14 +46,14 @@ export default {
     margin-right: 20px;
     font-size: 40px;
     font-weight: 600;
-    color: #AAAAAA;
+    color: #aaaaaa;
   }
 
   .van-rate {
-    position: absolute;
-    top: 50%;
-    left: 80px;
-    margin-top: -13px
+    // position: absolute;
+    // top: 50%;
+    // left: 80px;
+    // margin-top: -13px;
   }
 
   .van-button {
@@ -53,22 +63,21 @@ export default {
     margin-top: -18px;
     font-size: 16px;
     line-height: 24px;
-    color: #EFA11F;
-    background-color: #FFF7EB;
-    border-color: #FFF7EB
+    color: #efa11f;
+    background-color: #fff7eb;
+    border-color: #fff7eb;
   }
 }
 
 .evaluate-list {
   h3 {
-    font-size: 16px
+    font-size: 16px;
   }
 
   .evaluate-no {
     padding: 50px;
     text-align: center;
-    color: #aaa
+    color: #aaa;
   }
-
 }
 </style>

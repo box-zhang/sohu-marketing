@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="topdiv">
-      <navBar :barName="barName"></navBar>
-    </div>
+    <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
       <!-- 新人必学 -->
       <van-row class="hint">
@@ -67,7 +65,10 @@ export default {
   data() {
     return {
       active: '',
-      barName: '新人必学',
+      barMsg: {
+        barName: '新人必学',
+        rightMsg: false,
+      },
     }
   },
 }

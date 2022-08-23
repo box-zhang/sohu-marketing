@@ -96,7 +96,7 @@ export default {
     .van-icon {
       position: absolute;
       top: 1px;
-      left: 2px;
+      left: 5px;
       font-size: 14px;
     }
 
