@@ -19,10 +19,14 @@ import watermark from './common/watermark.js'
 import router from './router'
 import store from './store'
 const Mock = require('mockjs');
+// import VideoPlayer from 'vue-video-player'
+// require('video.js/dist/video-js.css')
+// require('vue-video-player/src/custom-theme.css')
+
 
 Vue.prototype.$watermark = watermark
-// import Vconsole from 'vconsole';
-// new Vconsole();
+    // import Vconsole from 'vconsole';
+    // new Vconsole();
 import { Button, CellGroup, Col, Collapse, CollapseItem, Field, Grid, GridItem, Icon, Image as VanImage, List, NavBar, Rate, Row, Step, Steps, Swipe, SwipeItem, Tab, Tabbar, TabbarItem, Tabs, Tag } from 'vant'
 import tabbar from './components/tabbar.vue'
 Vue.component('tabbar', tabbar)
@@ -36,40 +40,41 @@ Vue.prototype.$util = util
 Vue.prototype.$hxe = hxeapi
 
 Vue.use(NavBar).use(Icon).use(Swipe)
-  .use(SwipeItem).use(Grid).use(GridItem)
-  .use(Tabbar).use(TabbarItem).use(VanImage)
-  .use(Tag).use(Tab).use(Tabs).use(Collapse).use(CollapseItem)
-  .use(Col).use(Row).use(Rate).use(Button).use(Field).use(CellGroup)
-  .use(Step).use(Steps).use(List);
+    .use(SwipeItem).use(Grid).use(GridItem)
+    .use(Tabbar).use(TabbarItem).use(VanImage)
+    .use(Tag).use(Tab).use(Tabs).use(Collapse).use(CollapseItem)
+    .use(Col).use(Row).use(Rate).use(Button).use(Field).use(CellGroup)
+    .use(Step).use(Steps).use(List);
 
+// Vue.use(VideoPlayer);
 
 //全局配置项
 Vue.prototype.$config = config
-//请求封装
+    //请求封装
 Vue.prototype.$http = http
 Vue.prototype.$http.defaults.baseURL = Vue.prototype.$config_env.VUE_APP_HOST;
 
 //截取标题九个字
-Vue.prototype.$titleName = function (titlename) {
-  return new Promise((resolve, reject) => {
-    var that = this
-    var name = (titlename && titlename.length > 9 ? titlename.substring(0, 9) : titlename)
-    // console.log(name)
-    resolve(name)
-  })
+Vue.prototype.$titleName = function(titlename) {
+    return new Promise((resolve, reject) => {
+        var that = this
+        var name = (titlename && titlename.length > 9 ? titlename.substring(0, 9) : titlename)
+            // console.log(name)
+        resolve(name)
+    })
 }
 
 // 切换页面滚动回顶部
 router.afterEach((to, from, next) => {
-  window.scrollTo(0, 0);
-  // 或
-  // window.scroll(0, 0);
+    window.scrollTo(0, 0);
+    // 或
+    // window.scroll(0, 0);
 });
 
 const app = new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')
 
 export default app;

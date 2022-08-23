@@ -9,17 +9,20 @@
     <van-row class="msg-b">
       <van-col span="24">
         <div class="msg-r">
-          <div class="msg text-hide" v-if="info.isShowUser">
+          <div class="msg text-hide"
+               v-if="info.isShowUser">
             <van-icon name="user-circle-o" />
             <span class="">讲师</span>
             <span class="gray">{{ info.courseTeacher }}</span>
           </div>
 
           <div class="time text-hide">
-            <van-icon v-if="info.isShowTime" name="clock-o" />
-            <span class="gray" v-if="info.isShowTime">{{
-              info.courseTime
-            }}</span>
+            <van-icon v-if="info.isShowTime"
+                      name="clock-o" />
+            <span class="gray"
+                  v-if="info.isShowTime">{{
+                      info.courseTime
+                  }}</span>
           </div>
         </div>
       </van-col>
@@ -57,8 +60,8 @@ export default {
   .msg-b {
     position: absolute;
     overflow: hidden;
-    width: 66.66666667%;
     bottom: 3px;
+    width: 66.66666667%;
   }
 
   .msg-r {
@@ -77,13 +80,13 @@ export default {
 
   .msg {
     float: left;
-    padding-left: 16px;
+    padding-left: 10px;
     text-align: left;
   }
 
   .time {
     float: right;
-    padding-left: 14px;
+    padding-left: 10px;
     text-align: right;
   }
 
@@ -95,9 +98,9 @@ export default {
 
     .van-icon {
       position: absolute;
-      top: 1px;
-      left: 5px;
-      font-size: 14px;
+      top: 2px;
+      left: 0;
+      font-size: 13px;
     }
 
     span {

@@ -2,18 +2,20 @@
   <div>
     <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
-      <van-row gutter="10" class="video-lr" v-for="item in watchList">
-        <van-col span="8">
-          <van-image
-            width="100%"
-            fit="scale-down"
-            position="cover"
-            :src="item.courseUrl"
-          />
-        </van-col>
-        <van-col span="16">
-          <courseMsg :courseData="item"></courseMsg>
-        </van-col>
+      <van-row gutter="10"
+               class="video-lr"
+               v-for="item in watchList">
+        <router-link to="/courseIn">
+          <van-col span="8">
+            <van-image width="100%"
+                       fit="scale-down"
+                       position="cover"
+                       :src="item.courseUrl" />
+          </van-col>
+          <van-col span="16">
+            <courseMsg :courseData="item"></courseMsg>
+          </van-col>
+        </router-link>
       </van-row>
     </div>
     <footerLine></footerLine>

@@ -48,7 +48,7 @@ export default {
   }
 
   .gray {
-    margin: 20px 0;
+    margin: 5px 0;
     padding: 3px 6px;
     background: #f3f3f3;
     color: #777;

@@ -13,9 +13,10 @@
     </van-col>
     <van-col span="6">
       <router-link :to="info.toUrl">
-        <div class="st-icon-pandora m-more"
+        <div class="m-more"
              v-if="info.isMore">
-          更多 <span class="st-icon-pandora"></span>
+          更多 <span class="m-more-icon"><img src="@/assets/static/peixun/icon_fanhui@3x.png"
+                 alt=""></span>
         </div>
       </router-link>
     </van-col>
@@ -49,6 +50,16 @@ export default {
     top: 50%;
     margin-top: -8px;
     color: #999;
+    padding-right: 10px;
+
+    .m-more-icon {
+      display: inline-block;
+      width: 5px;
+
+      img {
+        width: 100%;
+      }
+    }
   }
 }
 </style>

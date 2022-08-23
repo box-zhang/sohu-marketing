@@ -1,15 +1,16 @@
 <template>
   <div class="course-in">
     <navBar :bar="barMsg"></navBar>
-    <div class="video-box mt-bar">
-      <van-icon name="play-circle-o" size="2rem" color="white" />
-    </div>
-    <van-tabs v-model:active="active" scrollspy sticky>
-      <van-tab
-        v-for="item in courseDataMsg"
-        :title="item.cardName"
-        :key="item.cardId"
-      >
+    <vueVideoPlayer src="@/assets/video/test.mp4"></vueVideoPlayer>
+    <!-- <van-icon name="play-circle-o"
+                size="2rem"
+                color="white" /> -->
+    <van-tabs v-model:active="active"
+              scrollspy
+              sticky>
+      <van-tab v-for="item in courseDataMsg"
+               :title="item.cardName"
+               :key="item.cardId">
         <div class="video-lr">
           <!-- <courseMsg :courseData="item.cardList"></courseMsg> -->
         </div>
@@ -23,48 +24,47 @@
           {{ courseDataMsg[0].courseIntroduce }}
         </p>
         <div class="msg-r">
-          <div class="msg text-hide" v-if="courseDataMsg[0].isShowUser">
+          <div class="msg text-hide"
+               v-if="courseDataMsg[0].isShowUser">
             <van-icon name="user-circle-o" />
             <span class="">讲师</span>
             <span class="gray">{{
-              courseDataMsg[0].courseTeacher.cTeacherName
+                courseDataMsg[0].courseTeacher.cTeacherName
             }}</span>
           </div>
 
           <div class="time text-hide">
-            <van-icon v-if="courseDataMsg[0].isShowTime" name="clock-o" />
-            <span class="gray" v-if="courseDataMsg[0].isShowTime">{{
-              courseDataMsg[0].courseTime
-            }}</span>
+            <van-icon v-if="courseDataMsg[0].isShowTime"
+                      name="clock-o" />
+            <span class="gray"
+                  v-if="courseDataMsg[0].isShowTime">{{
+                      courseDataMsg[0].courseTime
+                  }}</span>
           </div>
         </div>
       </div>
       <h2>讲师介绍</h2>
       <div class="teacher-msg mb-20">
         <div class="teacher-head">
-          <van-image
-            round
-            width="100%"
-            height="100%"
-            :src="courseDataMsg[0].courseTeacher.cTeacherImg"
-          />
+          <van-image round
+                     width="100%"
+                     height="100%"
+                     :src="courseDataMsg[0].courseTeacher.cTeacherImg" />
         </div>
         <h3>{{ courseDataMsg[0].courseTeacher.cTeacherName }}</h3>
         <p>{{ courseDataMsg[0].courseTeacher.cTeacherIntroduce }}</p>
       </div>
       <h2>课程资料</h2>
       <div class="course-file mb-20">
-        <van-tag
-          type="primary"
-          size="medium"
-          color="#FFF7EB"
-          text-color="#EFA11F"
-          >PDF</van-tag
-        >
+        <van-tag type="primary"
+                 size="medium"
+                 color="#FFF7EB"
+                 text-color="#EFA11F">PDF</van-tag>
         <p class="text-hide">{{ courseDataMsg[0].courseName }}</p>
         <div class="share">
           <span class="st-icon-pandora">
-            <van-icon name="share-o" color="#555555" />
+            <van-icon name="share-o"
+                      color="#555555" />
           </span>
         </div>
       </div>
@@ -81,13 +81,11 @@ import mkTitle from '@/views/mkModule/mTitle.vue'
 import navBar from '@/views/mkModule/navBar.vue'
 import Mock from 'mockjs'
 import { ref } from 'vue'
+import vueVideoPlayer from '@/views/mkModule/video.vue'
 export default {
   name: 'courseIn',
   components: {
-    navBar,
-    mkTitle,
-    courseMsg,
-    evaluateMsg,
+    navBar, mkTitle, courseMsg, evaluateMsg, vueVideoPlayer
   },
   data() {
     return {
@@ -142,25 +140,6 @@ export default {
 
 <style lang="less" scoped>
 .course-in {
-  .video-box {
-    position: relative;
-    width: 100%;
-    height: 240px;
-    background: #eee;
-    text-align: center;
-
-    .van-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-top: -1rem;
-      margin-left: -1rem;
-    }
-    .van-image {
-      border-radius: 5px;
-    }
-  }
-
   .course-msg {
     font-size: 14px;
     line-height: 20px;

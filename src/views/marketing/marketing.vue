@@ -79,7 +79,8 @@
         <van-grid :border="false"
                   :column-num="2"
                   :gutter="8"
-                  :center="false">
+                  :center="false"
+                  class="show-tb">
           <van-grid-item v-for="item in newCourseMsg.newCourseList"
                          :key="item.id">
             <router-link to="/courseIn">
@@ -436,7 +437,22 @@ export default {
   .van-grid-item__content {
     padding: 0;
   }
+
+  .course-msg {
+    padding: 0 5px;
+  }
+
+  .show-tb {
+    .van-row {
+      margin: 6px 0;
+    }
+
+    .msg-b {
+      position: relative;
+    }
+  }
 }
+
 
 .master {
   .van-row {
