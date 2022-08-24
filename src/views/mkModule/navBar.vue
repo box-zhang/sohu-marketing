@@ -2,7 +2,7 @@
  * @Author: boxZhang
  * @Date: 2022-08-22 10:13:57
  * @LastEditors: boxZhang
- * @LastEditTime: 2022-08-23 11:34:40
+ * @LastEditTime: 2022-08-24 11:11:24
  * @Description: 好好做人，谨慎敲码
  * @FilePath: \workspace\sohu_project\sohu-marketing\src\views\mkModule\navBar.vue
 -->
@@ -14,10 +14,11 @@
       left-arrow
       @click-left="onClickLeft"
       :border="false"
-      fixed="true"
+      :fixed="true"
     >
       <template #right>
-        <div class="icon" :v-if="info.rightMsg">
+        <slot name="submitStar"></slot>
+        <div class="icon" v-if="info.rightMsg">
           <router-link :to="info.rightMsg.barRightUrl">
             <span>{{ info.rightMsg.barRightText }}</span>
             <img :src="info.rightMsg.barRightIcon" alt="" />
