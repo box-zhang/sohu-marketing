@@ -19,7 +19,7 @@
       <template #right>
         <slot name="submitStar"></slot>
         <div class="icon" v-if="info.rightMsg">
-          <router-link :to="info.rightMsg.barRightUrl">
+          <router-link :to="{ name: info.rightMsg.barRightUrlName }">
             <span>{{ info.rightMsg.barRightText }}</span>
             <img :src="info.rightMsg.barRightIcon" alt="" />
           </router-link>

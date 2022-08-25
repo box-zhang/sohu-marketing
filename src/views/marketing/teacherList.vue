@@ -6,7 +6,7 @@
                class="mtb-10"
                v-for="item in teacherMsg"
                :key="item.tId">
-        <router-link to="/teacherIn">
+        <router-link :to="{name:'teacherIn'}">
           <van-col span="8">
             <van-image fit="cover"
                        width="100%"

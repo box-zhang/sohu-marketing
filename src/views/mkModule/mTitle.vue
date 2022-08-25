@@ -2,7 +2,7 @@
  * @Author: boxZhang
  * @Date: 2022-08-22 10:13:57
  * @LastEditors: boxZhang
- * @LastEditTime: 2022-08-23 15:36:45
+ * @LastEditTime: 2022-08-25 10:31:53
  * @Description: 好好做人，谨慎敲码
  * @FilePath: \workspace\sohu_project\sohu-marketing\src\views\mkModule\mTitle.vue
 -->
@@ -12,11 +12,12 @@
       <h2>{{ info.title }}</h2>
     </van-col>
     <van-col span="6">
-      <router-link :to="info.toUrl">
-        <div class="m-more"
-             v-if="info.isMore">
-          更多 <span class="m-more-icon"><img src="@/assets/static/peixun/icon_fanhui@3x.png"
-                 alt=""></span>
+      <router-link :to="{ name: info.toUrlName }">
+        <div class="m-more" v-if="info.isMore">
+          更多
+          <span class="m-more-icon"
+            ><img src="@/assets/static/peixun/icon_fanhui@3x.png" alt=""
+          /></span>
         </div>
       </router-link>
     </van-col>

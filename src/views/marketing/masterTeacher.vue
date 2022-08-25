@@ -2,7 +2,7 @@
  * @Author: boxZhang
  * @Date: 2022-08-22 10:13:56
  * @LastEditors: boxZhang
- * @LastEditTime: 2022-08-23 16:32:59
+ * @LastEditTime: 2022-08-25 10:19:55
  * @Description: 好好做人，谨慎敲码
  * @FilePath: \workspace\sohu_project\sohu-marketing\src\views\marketing\masterTeacher.vue
 -->
@@ -16,7 +16,7 @@
         v-for="item in teacherMsg"
         :key="item.tId"
       >
-        <router-link to="/teacherIn">
+        <router-link :to="{ name: 'teacherIn' }">
           <van-col span="8">
             <van-image
               fit="cover"

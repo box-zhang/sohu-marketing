@@ -2,16 +2,15 @@
   <div>
     <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
-      <van-row gutter="10"
-               class="video-lr"
-               v-for="item in watchList">
-
-        <router-link to="/courseIn">
+      <van-row gutter="10" class="video-lr" v-for="item in watchList">
+        <router-link :to="{ name: 'courseIn' }">
           <van-col span="8">
-            <van-image width="100%"
-                       fit="cover"
-                       position="center"
-                       :src="item.courseUrl" />
+            <van-image
+              width="100%"
+              fit="cover"
+              position="center"
+              :src="item.courseUrl"
+            />
           </van-col>
           <van-col span="16">
             <courseMsg :courseData="item"></courseMsg>

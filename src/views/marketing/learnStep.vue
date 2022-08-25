@@ -6,8 +6,10 @@
       <van-row class="hint">
         <van-col span="16">
           <div class="hint-img">
-            <img src="@/assets/static/peixun/icon_xinrenkehceng@2x.png"
-                 alt="" />
+            <img
+              src="@/assets/static/peixun/icon_xinrenkehceng@2x.png"
+              alt=""
+            />
           </div>
           <div class="hint-text">
             <h3>新人课程</h3>
@@ -15,7 +17,9 @@
           </div>
         </van-col>
         <van-col span="8">
-          <router-link to="/learn"><button>立即进入</button></router-link>
+          <router-link :to="{ name: 'learn' }"
+            ><button>立即进入</button></router-link
+          >
         </van-col>
       </van-row>
       <div class="block20"></div>
@@ -25,8 +29,7 @@
           <h3>第一步：完成新人课程</h3>
           <p class="step-hint">
             <span class="color333">
-              <van-icon name="warning-o"
-                        color="#666" />提示
+              <van-icon name="warning-o" color="#666" />提示
             </span>
             请合理规划时间完成新人课程
           </p>
@@ -35,8 +38,7 @@
           <h3>第二步：理论考试</h3>
           <p class="step-hint">
             <span class="color333">
-              <van-icon name="warning-o"
-                        color="#666" />提示
+              <van-icon name="warning-o" color="#666" />提示
             </span>
             完成新人必学课程后将在线上进行考试
           </p>
@@ -45,8 +47,7 @@
           <h3>第三步：新人天考核</h3>
           <p class="step-hint">
             <span class="color333">
-              <van-icon name="warning-o"
-                        color="#666" />提示
+              <van-icon name="warning-o" color="#666" />提示
             </span>
             理论考试完成后将在线下进行新人提案考核
           </p>
@@ -124,6 +125,5 @@ export default {
 
 .hint {
   background: #f6f6f6;
-
 }
 </style>

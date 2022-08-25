@@ -19,7 +19,7 @@
         allow-half
         readonly
       />
-      <router-link to="/evaluate">
+      <router-link :to="{ name: 'evaluate' }">
         <van-button
           type="primary"
           size="small"
