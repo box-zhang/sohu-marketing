@@ -13,7 +13,7 @@
             />
           </van-col>
           <van-col span="16">
-            <courseMsg :courseData="item"></courseMsg>
+            <!-- <courseMsg :courseData="item"></courseMsg> -->
           </van-col>
         </router-link>
       </van-row>

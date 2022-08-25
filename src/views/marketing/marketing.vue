@@ -2,7 +2,7 @@
  * @Author: boxZhang
  * @Date: 2022-08-18 16:44:07
  * @LastEditors: boxZhang
- * @LastEditTime: 2022-08-25 10:16:59
+ * @LastEditTime: 2022-08-25 15:46:19
  * @Description: 好好做人，谨慎敲码
  * @FilePath: \workspace\sohu_project\sohu-marketing\src\views\marketing\marketing.vue
 -->
@@ -24,7 +24,7 @@
           v-for="item in tabList"
           :icon="item.iconUrl"
           :text="item.title"
-          :to="item.router"
+          :to="{ name: item.router }"
         />
       </van-grid>
       <!-- 新人必学 -->
@@ -88,7 +88,7 @@
           >
             <router-link :to="{ name: 'courseIn' }">
               <van-image :src="item.courseImg" />
-              <courseMsg :courseData="item"></courseMsg>
+              <!-- <courseMsg :courseData="item"></courseMsg> -->
             </router-link>
           </van-grid-item>
         </van-grid>
@@ -96,27 +96,17 @@
       <!-- 大咖驾到 -->
       <div class="master">
         <mkTitle :data="masterMsg"></mkTitle>
-        <van-grid
-          direction="horizontal"
-          :column-num="1"
-          :border="false"
-          :center="false"
-        >
-          <van-grid-item v-for="item in masterMsg" :key="item.id">
-            <router-link :to="{ name: 'teacherIn' }">
-              <van-row :gutter="10">
-                <van-col span="8">
-                  <van-image :src="item.masterImg" />
-                </van-col>
-                <van-col span="16">
-                  <h3>{{ item.masterName }} · {{ item.masterTitle }}</h3>
-                  <p>{{ item.masterIfo }}</p>
-                  <van-tag type="primary">{{ item.masterTag }}</van-tag>
-                </van-col>
-              </van-row>
-            </router-link>
-          </van-grid-item>
-        </van-grid>
+
+        <router-link :to="{ name: 'teacherIn' }">
+          <van-row :gutter="10" v-for="item in masterMsg" :key="item.id">
+            <van-col span="8"> <van-image :src="item.masterImg" /> </van-col>
+            <van-col span="16">
+              <h3>{{ item.masterName }} · {{ item.masterTitle }}</h3>
+              <p>{{ item.masterIfo }}</p>
+              <van-tag type="primary">{{ item.masterTag }}</van-tag>
+            </van-col>
+          </van-row>
+        </router-link>
       </div>
     </div>
     <footerLine></footerLine>
@@ -166,22 +156,22 @@ export default {
         {
           title: '业务培训',
           iconUrl: require('@/assets/static/peixun/icon_yewupeixun@2x.png'),
-          router: '/bTraining',
+          router: 'bTraining',
         },
         {
           title: '销售技巧',
           iconUrl: require('@/assets/static/peixun/icon_xiaoshoujiqiao@2x.png'),
-          router: '/sales',
+          router: 'sales',
         },
         {
           title: '案例解析',
           iconUrl: require('@/assets/static/peixun/icon_anlijiexi@2x.png'),
-          router: '/anliList',
+          router: 'anliList',
         },
         {
           title: '内部讲师',
           iconUrl: require('@/assets/static/peixun/icon_neibujiangshi@2x.png'),
-          router: '/teacherList',
+          router: 'teacherList',
         },
         {
           title: '大咖驾到',
@@ -265,6 +255,9 @@ export default {
 
 <style lang="less">
 .marketingdiv {
+  a {
+    display: block;
+  }
   a h2,
   a h3 {
     color: #333;
@@ -312,10 +305,8 @@ export default {
   }
 
   button {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    margin-top: -15px;
+    float: right;
+    margin-top: 5px;
     padding: 0 5px;
     font-weight: 600;
     color: #efa11f;
@@ -351,14 +342,12 @@ export default {
       color: #777;
     }
   }
-
   .van-swipe {
     overflow: initial;
   }
 
   .van-swipe-item {
     text-align: center;
-
     &:first-child {
       margin-left: -7px;
     }
@@ -372,10 +361,9 @@ export default {
       padding: 20px 5px;
       box-shadow: 0px 6px 15px 0px rgba(193, 193, 193, 0.29);
       border-radius: 10px;
-
-      .van-image--round {
-        border-radius: 50%;
-      }
+    }
+    a:active .item-in {
+      box-shadow: 0px 6px 15px 0px rgba(193, 193, 193, 0.8);
     }
   }
 
@@ -409,15 +397,14 @@ export default {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
-}
-
-.course {
   .van-image {
     width: 100%;
     border-radius: 5px;
     overflow: hidden;
   }
+}
 
+.course {
   .video-msg .msg {
     width: 100%;
   }
@@ -457,19 +444,8 @@ export default {
 
 .master {
   .van-row {
-    width: 100%;
-  }
-
-  .van-grid-item {
     margin-bottom: 10px;
   }
-
-  .van-image {
-    width: 100%;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-
   h3 {
     margin: 0;
   }
@@ -478,10 +454,6 @@ export default {
     margin-top: 15px;
     color: #777;
     background: #f3f3f3;
-  }
-
-  .van-grid-item__content {
-    padding: 0;
   }
 }
 

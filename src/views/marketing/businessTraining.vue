@@ -1,14 +1,15 @@
 <template>
   <div>
     <navBar :bar="barMsg"></navBar>
-    <van-tabs v-model:active="active" sticky class="mt-bar">
+    <van-tabs v-model="active" sticky class="mt-bar">
       <div class="marketingdiv">
         <van-tab
           v-for="item in businessTrainingMsg"
           :title="item.cardName"
           :key="item.cardId"
         >
-          <van-row gutter="10" class="video-lr" v-for="item in item.cardList">
+          <courseMsg :courseData="item.cardList"></courseMsg>
+          <!-- <van-row gutter="10" class="video-lr" v-for="item in item.cardList">
             <router-link to="{name:'courseIn'}">
               <van-col span="8">
                 <van-image
@@ -22,7 +23,7 @@
                 <courseMsg :courseData="item"></courseMsg>
               </van-col>
             </router-link>
-          </van-row>
+          </van-row> -->
         </van-tab>
       </div>
     </van-tabs>
@@ -31,10 +32,10 @@
 </template>
 
 <script>
-import Mock from 'mockjs'
 import courseMsg from '@/views/mkModule/courseMsg.vue'
-import navBar from '@/views/mkModule/navBar.vue'
 import footerLine from '@/views/mkModule/footerLine.vue'
+import navBar from '@/views/mkModule/navBar.vue'
+import Mock from 'mockjs'
 export default {
   name: 'businessTraining',
   components: {
@@ -84,7 +85,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .van-image {
   border-radius: 5px;
   overflow: hidden;

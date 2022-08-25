@@ -1,33 +1,42 @@
 <template>
-  <div class="course-msg">
-    <van-row>
-      <van-col span="24">
-        <h3>{{ info.courseName }}</h3>
-        <p v-if="info.isShowIntroduce">{{ info.courseIntroduce }}</p>
+  <div>
+    {{ info }}
+    <div :v-for="i in info">{{ i }}</div>
+  </div>
+  <!-- <van-row gutter="10" class="video-lr" :v-for="item in info">
+    <router-link :to="{ name: 'courseIn' }">
+      <van-col span="8">
+        <van-image
+          width="100%"
+          fit="scale-down"
+          position="cover"
+          :src="item.courseUrl"
+        />
       </van-col>
-    </van-row>
-    <van-row class="msg-b">
-      <van-col span="24">
-        <div class="msg-r">
-          <div class="msg text-hide"
-               v-if="info.isShowUser">
-            <van-icon name="user-circle-o" />
-            <span class="">讲师</span>
-            <span class="gray">{{ info.courseTeacher }}</span>
-          </div>
+      <van-col span="16" class="course-msg">
+        <div>
+          <h3>{{ item.courseName }}</h3>
+          <p v-if="item.isShowIntroduce">{{ item.courseIntroduce }}</p>
+        </div>
+        <div class="msg-b">
+          <div class="msg-r">
+            <div class="msg text-hide" v-if="item.isShowUser">
+              <van-icon name="user-circle-o" />
+              <span class="">讲师</span>
+              <span class="gray">{{ item.courseTeacher }}</span>
+            </div>
 
-          <div class="time text-hide">
-            <van-icon v-if="info.isShowTime"
-                      name="clock-o" />
-            <span class="gray"
-                  v-if="info.isShowTime">{{
-                      info.courseTime
-                  }}</span>
+            <div class="time text-hide">
+              <van-icon v-if="item.isShowTime" name="clock-o" />
+              <span class="gray" v-if="item.isShowTime">{{
+                item.courseTime
+              }}</span>
+            </div>
           </div>
         </div>
       </van-col>
-    </van-row>
-  </div>
+    </router-link>
+  </van-row> -->
 </template>
 
 <script>
@@ -40,8 +49,8 @@ export default {
   },
   props: {
     courseData: {
-      type: Object,
-      default: {},
+      type: Array,
+      default: [],
     },
     // isShowTime: {
     //   type: String,
