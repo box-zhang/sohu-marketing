@@ -9,21 +9,6 @@
           :key="item.cardId"
         >
           <courseMsg :courseData="item.cardList"></courseMsg>
-          <!-- <van-row gutter="10" class="video-lr" v-for="item in item.cardList">
-            <router-link to="{name:'courseIn'}">
-              <van-col span="8">
-                <van-image
-                  width="100%"
-                  fit="scale-down"
-                  position="cover"
-                  :src="item.courseUrl"
-                />
-              </van-col>
-              <van-col span="16">
-                <courseMsg :courseData="item"></courseMsg>
-              </van-col>
-            </router-link>
-          </van-row> -->
         </van-tab>
       </div>
     </van-tabs>
@@ -63,6 +48,7 @@ export default {
             cardName: '@cword(4)',
             'cardList|8-16': [
               {
+                toUrlName: '',
                 isShowTime: true,
                 isShowUser: true,
                 isShowTag: false,
@@ -85,16 +71,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-.van-image {
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.van-row {
-  position: relative;
-}
-
+<style lang="less">
 .van-sticky {
   margin-bottom: 15px;
   box-shadow: 0px 6px 32px 0px rgba(193, 193, 193, 0.16);
@@ -106,16 +83,5 @@ export default {
 
 .van-tab {
   font-size: 14px;
-}
-
-.video-lr {
-  margin: 12px 0;
-
-  .msg-r {
-    // position: absolute;
-    // bottom: 0;
-    // overflow: hidden;
-    // width: 78%;
-  }
 }
 </style>

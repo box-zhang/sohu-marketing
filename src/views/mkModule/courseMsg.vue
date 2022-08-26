@@ -1,50 +1,49 @@
 <template>
   <div>
-    {{ info }}
-    <div :v-for="i in info">{{ i }}</div>
-  </div>
-  <!-- <van-row gutter="10" class="video-lr" :v-for="item in info">
-    <router-link :to="{ name: 'courseIn' }">
-      <van-col span="8">
-        <van-image
-          width="100%"
-          fit="scale-down"
-          position="cover"
-          :src="item.courseUrl"
-        />
-      </van-col>
-      <van-col span="16" class="course-msg">
-        <div>
-          <h3>{{ item.courseName }}</h3>
-          <p v-if="item.isShowIntroduce">{{ item.courseIntroduce }}</p>
-        </div>
-        <div class="msg-b">
-          <div class="msg-r">
-            <div class="msg text-hide" v-if="item.isShowUser">
-              <van-icon name="user-circle-o" />
-              <span class="">讲师</span>
-              <span class="gray">{{ item.courseTeacher }}</span>
-            </div>
+    <!-- {{ info }} -->
+    <van-row gutter="10" class="item-lr" v-for="item in info">
+      <router-link :to="{ name: 'courseIn' }">
+        <van-col span="8">
+          <van-image
+            width="100%"
+            fit="scale-down"
+            position="cover"
+            :src="item.courseUrl"
+          />
+        </van-col>
+        <van-col span="16" class="course-msg">
+          <div>
+            <h3>{{ item.courseName }}</h3>
+            <p v-if="item.isShowIntroduce">{{ item.courseIntroduce }}</p>
+          </div>
+          <div class="msg-b">
+            <div class="msg-r">
+              <div class="msg text-hide" v-if="item.isShowUser">
+                <van-icon name="user-circle-o" />
+                <span class="">讲师</span>
+                <span class="gray">{{ item.courseTeacher }}</span>
+              </div>
 
-            <div class="time text-hide">
-              <van-icon v-if="item.isShowTime" name="clock-o" />
-              <span class="gray" v-if="item.isShowTime">{{
-                item.courseTime
-              }}</span>
+              <div class="time text-hide">
+                <van-icon v-if="item.isShowTime" name="clock-o" />
+                <span class="gray" v-if="item.isShowTime">{{
+                  item.courseTime
+                }}</span>
+              </div>
             </div>
           </div>
-        </div>
-      </van-col>
-    </router-link>
-  </van-row> -->
+        </van-col>
+      </router-link>
+    </van-row>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'videoMsg',
+  name: 'courseMsg',
   data() {
     return {
-      info: this.courseData,
+      info: [],
     }
   },
   props: {
@@ -52,19 +51,25 @@ export default {
       type: Array,
       default: [],
     },
-    // isShowTime: {
-    //   type: String,
-    //   default: ""
-    // },
-    // isShowUser: {
-    //   type: String,
-    //   default: ""
-    // },
+  },
+  watch: {
+    courseData: function(val) {
+      this.info = val
+    },
   },
 }
 </script>
 
 <style scoped lang="less">
+.van-image {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.van-row {
+  position: relative;
+}
+
 .course-msg {
   .msg-b {
     position: absolute;
@@ -120,5 +125,8 @@ export default {
       margin: 0 5px;
     }
   }
+}
+.item-lr {
+  margin: 12px 0;
 }
 </style>

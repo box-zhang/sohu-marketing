@@ -9,25 +9,7 @@
             :title="item.cardName"
             :key="item.cardId"
           >
-            <router-link :to="{ name: 'courseIn' }">
-              <van-row
-                gutter="10"
-                class="video-lr"
-                v-for="itemI in item.cardList"
-              >
-                <van-col span="8">
-                  <van-image
-                    width="100%"
-                    fit="scale-down"
-                    position="cover"
-                    :src="itemI.courseUrl"
-                  />
-                </van-col>
-                <van-col span="16">
-                  <!-- <courseMsg :courseData="itemI"></courseMsg> -->
-                </van-col>
-              </van-row>
-            </router-link>
+            <courseMsg :courseData="item.cardList"></courseMsg>
           </van-tab>
         </div>
       </van-tabs>
@@ -43,7 +25,7 @@ import footerLine from '@/views/mkModule/footerLine.vue'
 import navBar from '@/views/mkModule/navBar.vue'
 import Mock from 'mockjs'
 export default {
-  name: 'businessTraining',
+  name: 'salesTechnique',
   components: {
     courseMsg,
     navBar,
@@ -69,8 +51,10 @@ export default {
             cardName: '@cword(4,5)',
             'cardList|8-16': [
               {
+                toUrlName: '',
                 isShowTime: false,
                 isShowUser: true,
+                isShowTags: false,
                 courseId: '@increment',
                 courseName: '@cword(3, 30)',
                 courseUrl: "@dataImage('120x80','png')",

@@ -2,21 +2,8 @@
   <div>
     <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
-      <van-row gutter="10" class="video-lr" v-for="item in watchList">
-        <router-link :to="{name:'courseIn'}">
-          <van-col span="8">
-            <van-image
-              width="100%"
-              fit="cover"
-              position="center"
-              :src="item.courseUrl"
-            />
-          </van-col>
-          <van-col span="16">
-            <!-- <courseMsg :courseData="item"></courseMsg> -->
-          </van-col>
-        </router-link>
-      </van-row>
+      <!-- {{ dataList }} -->
+      <courseMsg :courseData="dataList"></courseMsg>
     </div>
     <footerLine></footerLine>
   </div>
@@ -41,27 +28,33 @@ export default {
         barName: '案例解析',
         rightMsg: false,
       },
-      watchList: [],
+      dataList: [],
     }
   },
   methods: {
     init() {
       const { watchList } = Mock.mock({
-        // 精选讲师
-        'watchList|8-18': [
+        'watchList|1': [
           {
-            isShowTime: true,
-            isShowUser: false,
-            isShowTag: false,
-            courseId: '@increment',
-            courseName: '@cword(3, 30)',
-            courseUrl: "@dataImage('120x80','png')",
-            courseTeacher: '@cname()',
-            courseTime: "@date('yyyy.MM.dd')",
+            cardId: '@increment',
+            cardName: '@cword(4)',
+            'cardList|8-16': [
+              {
+                toUrlName: '',
+                isShowTime: true,
+                isShowUser: false,
+                isShowTag: false,
+                courseId: '@increment',
+                courseName: '@cword(3, 30)',
+                courseUrl: "@dataImage('120x80','png')",
+                courseTeacher: '@cname()',
+                courseTime: "@date('yyyy.MM.dd')",
+              },
+            ],
           },
         ],
       })
-      this.watchList = watchList
+      this.dataList = watchList.cardList
     },
   },
   mounted() {
