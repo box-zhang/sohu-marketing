@@ -2,7 +2,7 @@
  * @Author: boxZhang
  * @Date: 2022-08-22 10:13:56
  * @LastEditors: boxZhang
- * @LastEditTime: 2022-08-24 15:19:05
+ * @LastEditTime: 2022-08-29 14:51:06
  * @Description: 好好做人，谨慎敲码
  * @FilePath: \workspace\sohu_project\sohu-marketing\src\main.js
  */
@@ -27,7 +27,10 @@ const Mock = require('mockjs');
 Vue.prototype.$watermark = watermark
 // import Vconsole from 'vconsole';
 // new Vconsole();
-import { Button, CellGroup, Col, Collapse, CollapseItem, Field, Grid, GridItem, Icon, Image as VanImage, List, NavBar, Rate, Row, Step, Steps, Swipe, SwipeItem, Tab, Tabbar, TabbarItem, Tabs, Tag, Toast } from 'vant'
+import {
+  Button, CellGroup, Col, Collapse, CollapseItem, Field, Grid, GridItem, Icon, Image as VanImage,
+  List, NavBar, Progress, Rate, Row, Step, Steps, Swipe, SwipeItem, Tab, Tabbar, TabbarItem, Tabs, Tag, Toast
+} from 'vant'
 import tabbar from './components/tabbar.vue'
 Vue.component('tabbar', tabbar)
 
@@ -44,7 +47,7 @@ Vue.use(NavBar).use(Icon).use(Swipe)
   .use(Tabbar).use(TabbarItem).use(VanImage)
   .use(Tag).use(Tab).use(Tabs).use(Collapse).use(CollapseItem)
   .use(Col).use(Row).use(Rate).use(Button).use(Field).use(CellGroup)
-  .use(Step).use(Steps).use(List).use(Toast);
+  .use(Step).use(Steps).use(List).use(Toast).use(Progress);
 
 // Vue.use(VideoPlayer);
 

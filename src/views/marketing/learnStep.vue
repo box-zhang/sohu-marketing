@@ -76,12 +76,15 @@ export default {
 }
 </script>
 
-<style lang="less" scope>
+<style lang="less" scoped>
 .step-hint {
   position: relative;
   padding: 10px 10px 10px 34px;
   background: #f9f9f9;
   color: #999;
+  span {
+    margin-right: 6px;
+  }
 
   .van-icon-warning-o {
     position: absolute;
@@ -124,6 +127,71 @@ export default {
 }
 
 .hint {
-  background: #f6f6f6;
+  position: relative;
+  padding: 10px;
+  background: #fff8df;
+  border-radius: 5px;
+
+  .hint-img {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    margin-top: -21px;
+    width: 42px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .hint-text {
+    padding-left: 62px;
+  }
+
+  button {
+    float: right;
+    margin-top: 5px;
+    padding: 0 5px;
+    font-weight: 600;
+    color: #efa11f;
+    line-height: 28px;
+    font-size: 14px;
+    background: #fff8de;
+    border-radius: 3px;
+    border: 1px solid #efa11f;
+  }
+
+  h3,
+  p {
+    margin: 2px 0;
+  }
 }
+
+// .hint {
+//   background: #f6f6f6;
+//   .hint-img {
+//     position: absolute;
+//     top: 10px;
+//     left: 20px;
+//     width: 70px;
+//     img {
+//       width: 100%;
+//     }
+//   }
+//   .hint-text {
+//     margin: 20px 0;
+//     padding-left: 110px;
+//   }
+//   button {
+//     float: right;
+//     margin-top: 0.13333rem;
+//     padding: 0 0.13333rem;
+//     font-weight: 600;
+//     color: #efa11f;
+//     line-height: 0.74667rem;
+//     font-size: 0.37333rem;
+//     background: #fff8de;
+//     border-radius: 0.08rem;
+//     border: 1px solid #efa11f;
+//   }
+// }
 </style>

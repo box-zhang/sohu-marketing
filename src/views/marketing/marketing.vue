@@ -2,7 +2,7 @@
  * @Author: boxZhang
  * @Date: 2022-08-18 16:44:07
  * @LastEditors: boxZhang
- * @LastEditTime: 2022-08-25 15:46:19
+ * @LastEditTime: 2022-08-30 10:08:33
  * @Description: 好好做人，谨慎敲码
  * @FilePath: \workspace\sohu_project\sohu-marketing\src\views\marketing\marketing.vue
 -->
@@ -82,12 +82,34 @@
           :center="false"
           class="show-tb"
         >
+          <!-- <courseMsg :courseData="newCourseMsg.newCourseList"></courseMsg> -->
           <van-grid-item
             v-for="item in newCourseMsg.newCourseList"
-            :key="item.id"
+            :key="item.courseId"
           >
             <router-link :to="{ name: 'courseIn' }">
               <van-image :src="item.courseImg" />
+
+              <div>
+                <h3>{{ item.courseName }}</h3>
+                <p v-if="item.isShowIntroduce">{{ item.courseIntroduce }}</p>
+              </div>
+              <div class="msg-b">
+                <div class="msg-r">
+                  <div class="msg text-hide" v-if="item.isShowUser">
+                    <van-icon name="user-circle-o" />
+                    <span class="">讲师</span>
+                    <span class="gray">{{ item.courseTeacher }}</span>
+                  </div>
+
+                  <div class="time text-hide">
+                    <van-icon v-if="item.isShowTime" name="clock-o" />
+                    <span class="gray" v-if="item.isShowTime">{{
+                      item.courseTime
+                    }}</span>
+                  </div>
+                </div>
+              </div>
               <!-- <courseMsg :courseData="item"></courseMsg> -->
             </router-link>
           </van-grid-item>
@@ -218,13 +240,23 @@ export default {
         // 最新课程 newCourseList
         'newCourseList|4': [
           {
-            isShowTime: false,
+            toUrlName: '',
+            isShowTime: true,
             isShowUser: true,
             isShowTag: false,
-            id: '@increment',
-            courseName: '@ctitle()',
-            courseImg: "@dataImage('200x120','png')",
+            courseId: '@increment',
+            courseName: '@cword(3, 30)',
+            courseImg: "@dataImage('120x80','png')",
+            courseInUrl: 'courseIn',
             courseTeacher: '@cname()',
+            courseTime: "@date('yyyy.MM.dd')",
+            // isShowTime: false,
+            // isShowUser: true,
+            // isShowTag: false,
+            // id: '@increment',
+            // courseName: '@ctitle()',
+            // courseImg: "@dataImage('200x120','png')",
+            // courseTeacher: '@cname()',
           },
         ],
         // 大师驾到 masterMsg
@@ -253,7 +285,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped="">
 .marketingdiv {
   a {
     display: block;
@@ -294,7 +326,6 @@ export default {
     left: 15px;
     margin-top: -21px;
     width: 42px;
-
     img {
       width: 100%;
     }
@@ -394,7 +425,7 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
   }
   .van-image {
@@ -405,28 +436,32 @@ export default {
 }
 
 .course {
-  .video-msg .msg {
-    width: 100%;
-  }
-
-  .video-msg h3 {
-    margin: 5px;
-  }
-
-  .video-msg .msg-b {
+  .msg-b {
     position: relative;
     width: 100%;
+    span {
+      margin: 0 3px;
+    }
+  }
+  h3 {
+    margin: 5px;
+  }
+  .msg .time {
+    display: inline;
+  }
+
+  .time {
+    float: right;
+  }
+
+  .msg {
+    float: left;
   }
 
   .van-grid {
     padding-left: 0 !important;
     margin-right: -8px;
   }
-
-  .van-grid-item__content {
-    padding: 0;
-  }
-
   .course-msg {
     padding: 0 5px;
   }
@@ -440,8 +475,13 @@ export default {
       position: relative;
     }
   }
+  .van-grid-item {
+    margin-bottom: 10px;
+  }
+  /deep/ .van-grid-item__content {
+    padding: 0;
+  }
 }
-
 .master {
   .van-row {
     margin-bottom: 10px;

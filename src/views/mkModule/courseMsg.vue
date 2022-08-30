@@ -1,20 +1,27 @@
 <template>
   <div>
-    <!-- {{ info }} -->
+    <!-- {{ courseData }} -->
     <van-row gutter="10" class="item-lr" v-for="item in info">
-      <router-link :to="{ name: 'courseIn' }">
+      <router-link :to="{ name: item.courseInUrl }">
         <van-col span="8">
           <van-image
             width="100%"
             fit="scale-down"
             position="cover"
-            :src="item.courseUrl"
+            :src="item.courseImg"
           />
         </van-col>
         <van-col span="16" class="course-msg">
           <div>
             <h3>{{ item.courseName }}</h3>
             <p v-if="item.isShowIntroduce">{{ item.courseIntroduce }}</p>
+          </div>
+          <div class="progress-box" v-if="item.isShowProgress">
+            <van-progress
+              :percentage="item.progressWatched"
+              stroke-width="5"
+              show-pivot="true"
+            />
           </div>
           <div class="msg-b">
             <div class="msg-r">
@@ -53,19 +60,24 @@ export default {
     },
   },
   watch: {
-    courseData: function(val) {
-      this.info = val
+    courseData: {
+      handler(val) {
+        this.info = val
+      },
+      immediate: true,
     },
   },
 }
 </script>
 
-<style scoped lang="less">
+<style scoped="" lang="less">
 .van-image {
   border-radius: 5px;
   overflow: hidden;
 }
-
+.progress-box {
+  margin: 20px 0;
+}
 .van-row {
   position: relative;
 }
@@ -76,6 +88,7 @@ export default {
     overflow: hidden;
     bottom: 3px;
     width: 66.66666667%;
+    color: #999;
   }
 
   .msg-r {
@@ -91,6 +104,7 @@ export default {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    color: #333;
   }
 
   .msg {
@@ -103,17 +117,13 @@ export default {
     float: right;
     padding-left: 10px;
     text-align: right;
-    font-size: 12px;
   }
 
   .msg,
   .time {
     position: relative;
-    // margin-bottom: 5px;
     line-height: 18px;
-
     font-size: 12px;
-
     .van-icon {
       position: absolute;
       top: 2px;

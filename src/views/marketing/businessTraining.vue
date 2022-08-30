@@ -54,7 +54,8 @@ export default {
                 isShowTag: false,
                 courseId: '@increment',
                 courseName: '@cword(3, 30)',
-                courseUrl: "@dataImage('120x80','png')",
+                courseImg: "@dataImage('120x80','png')",
+                courseInUrl: 'courseIn',
                 courseTeacher: '@cname()',
                 courseTime: "@date('yyyy.MM.dd')",
               },
@@ -71,7 +72,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped="">
 .van-sticky {
   margin-bottom: 15px;
   box-shadow: 0px 6px 32px 0px rgba(193, 193, 193, 0.16);

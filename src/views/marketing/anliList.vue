@@ -2,7 +2,6 @@
   <div>
     <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
-      <!-- {{ dataList }} -->
       <courseMsg :courseData="dataList"></courseMsg>
     </div>
     <footerLine></footerLine>
@@ -46,7 +45,8 @@ export default {
                 isShowTag: false,
                 courseId: '@increment',
                 courseName: '@cword(3, 30)',
-                courseUrl: "@dataImage('120x80','png')",
+                courseImg: "@dataImage('120x80','png')",
+                courseInUrl: 'courseIn',
                 courseTeacher: '@cname()',
                 courseTime: "@date('yyyy.MM.dd')",
               },
@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less" scoped="">
 .van-image {
   border-radius: 5px;
   overflow: hidden;

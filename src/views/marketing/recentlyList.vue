@@ -2,21 +2,7 @@
   <div>
     <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
-      <van-row gutter="10" class="video-lr" v-for="item in watchList">
-        <router-link :to="{ name: 'courseIn' }">
-          <van-col span="8">
-            <van-image
-              width="100%"
-              fit="scale-down"
-              position="cover"
-              :src="item.courseUrl"
-            />
-          </van-col>
-          <van-col span="16">
-            <!-- <courseMsg :courseData="item"></courseMsg> -->
-          </van-col>
-        </router-link>
-      </van-row>
+      <courseMsg :courseData="watchList"></courseMsg>
     </div>
     <footerLine></footerLine>
   </div>
@@ -50,13 +36,18 @@ export default {
         // 精选讲师
         'watchList|8-18': [
           {
+            toUrlName: '',
             isShowTime: false,
             isShowUser: false,
+            isShowTags: false,
+            isShowProgress: true,
             courseId: '@increment',
             courseName: '@cword(3, 30)',
-            courseUrl: "@dataImage('120x80','png')",
+            courseImg: "@dataImage('120x80','png')",
+            courseInUrl: 'courseIn',
             courseTeacher: '@cname()',
             courseTime: "@date('yyyy.MM.dd')",
+            progressWatched: '@integer(0, 100)',
           },
         ],
       })

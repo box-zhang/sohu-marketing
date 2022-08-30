@@ -1,22 +1,16 @@
+<!--
+ * @Author: boxZhang
+ * @Date: 2022-08-24 10:06:52
+ * @LastEditors: boxZhang
+ * @LastEditTime: 2022-08-30 10:15:50
+ * @Description: 好好做人，谨慎敲码
+ * @FilePath: \workspace\sohu_project\sohu-marketing\src\views\marketing\newUserLearn.vue
+-->
 <template>
   <div>
     <navBar :bar="barMsg"></navBar>
     <div class="marketingdiv mt-bar">
-      <van-row gutter="10" class="video-lr" v-for="item in watchList">
-        <router-link :to="{ name: 'courseIn' }">
-          <van-col span="8">
-            <van-image
-              width="100%"
-              fit="cover"
-              position="center"
-              :src="item.courseUrl"
-            />
-          </van-col>
-          <van-col span="16">
-            <!-- <courseMsg :courseData="item"></courseMsg> -->
-          </van-col>
-        </router-link>
-      </van-row>
+      <courseMsg :courseData="watchList"></courseMsg>
     </div>
     <footerLine></footerLine>
   </div>
@@ -38,7 +32,7 @@ export default {
     return {
       active: '',
       barMsg: {
-        barName: '最近观看',
+        barName: '新人必学',
         rightMsg: false,
       },
       watchList: [],
@@ -50,14 +44,18 @@ export default {
         // 精选讲师
         'watchList|8-18': [
           {
+            toUrlName: '',
             isShowTime: true,
             isShowUser: false,
-            isShowTag: false,
+            isShowTags: false,
+            isShowProgress: false,
             courseId: '@increment',
             courseName: '@cword(3, 30)',
-            courseUrl: "@dataImage('120x80','png')",
+            courseImg: "@dataImage('120x80','png')",
+            courseInUrl: 'courseIn',
             courseTeacher: '@cname()',
             courseTime: "@date('yyyy.MM.dd')",
+            progressWatched: '@integer(0, 100)',
           },
         ],
       })
@@ -70,40 +68,8 @@ export default {
 }
 </script>
 
-<style lang="less">
-.van-image {
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.van-row {
-  position: relative;
-}
-
-.van-sticky {
-  margin-bottom: 15px;
-}
-
-.van-tabs__line {
-  width: 30px;
-}
-
-.van-tab {
-  font-size: 14px;
-}
-
-.video-lr {
-  margin: 12px 0;
-
-  .msg-r {
-    // position: absolute;
-    // bottom: 0;
-    // overflow: hidden;
-    // width: 78%;
-  }
-}
-
-.video-msg .time {
+<style lang="less" scoped>
+.course-msg .msg-r .time {
   float: left !important;
 }
 </style>

@@ -2,24 +2,24 @@
  * @Author: boxZhang
  * @Date: 2022-08-22 16:28:32
  * @LastEditors: boxZhang
- * @LastEditTime: 2022-08-22 16:54:24
+ * @LastEditTime: 2022-08-30 11:38:21
  * @Description: 好好做人，谨慎敲码
  * @FilePath: \workspace\sohu_project\sohu-marketing\src\views\mkModule\teacherMsg.vue
 -->
 <template>
   <div class="teacher-text">
     <h2>{{ info.tName }}</h2>
-    <div>{{ info.tText }}</div>
-    <div class="tag-box"
-         v-if="info.isShowTitle">
-      <van-tag type="primary"
-               class="gray">{{ info.tTitle }}</van-tag>
+    <p>{{ info.tText }}</p>
+    <div class="tag-box" v-if="info.isShowTitle">
+      <van-tag type="primary" class="tag-gray">{{ info.tTitle }}</van-tag>
     </div>
-    <div class="tag-box"
-         v-if="info.isShowTags">
-      <van-tag type="primary"
-               v-for="(item, index) in info.tTags"
-               :key="index">{{ item }}</van-tag>
+    <div class="tag-box" v-if="info.isShowTags">
+      <van-tag
+        type="primary"
+        v-for="(item, index) in info.tTags"
+        :key="index"
+        >{{ item }}</van-tag
+      >
     </div>
   </div>
 </template>
@@ -45,9 +45,13 @@ export default {
 .teacher-text {
   h2 {
     margin-top: 0;
+    color: #333;
+  }
+  p {
+    color: #666;
   }
 
-  .gray {
+  .tag-gray {
     margin: 5px 0;
     padding: 3px 6px;
     background: #f3f3f3;
@@ -58,6 +62,5 @@ export default {
   .tag-box {
     margin: 20px 0;
   }
-
 }
 </style>

@@ -29,8 +29,8 @@
             <div class="course-list">
               <div
                 class="course-item"
-                v-for="item in teacherMsg.courseList"
-                :key="item.cId"
+                v-for="(item, index) in showHandleList"
+                :key="index"
               >
                 <router-link :to="{ name: 'courseIn' }">
                   <van-icon name="play-circle" color="#FFD33F" />
@@ -49,9 +49,17 @@
                   </div>
                 </router-link>
               </div>
-              <p class="show-more" v-if="false">
-                展开更多
-                <van-icon name="arrow-down" size="12" />
+              <p
+                v-if="this.teacherMsg.courseList.length > 5"
+                class="show-more"
+                @click="showAll = !showAll"
+              >
+                {{ this.showAll ? '收起' : '展开更多' }}
+                <van-icon
+                  class="score-img"
+                  :name="this.showAll ? 'arrow-up' : 'arrow-down'"
+                  size="12"
+                />
               </p>
             </div>
             <div class="mb-20">
@@ -92,6 +100,7 @@ export default {
       },
       teacherMsg: {},
       activeName: '',
+      showAll: false,
     }
   },
   methods: {
@@ -103,7 +112,7 @@ export default {
           tName: '@cname()',
           tText: '@cword(3, 50)',
           'tTags|1-3': ['@cword(1, 5)'],
-          'courseList|2-10': [
+          'courseList|2-20': [
             {
               cId: '@increment',
               cName: '@cword(3, 15)',
@@ -115,26 +124,55 @@ export default {
         },
       })
       this.teacherMsg = teacherMsg
-      console.log(teacherMsg)
     },
   },
   mounted() {
     this.init()
   },
-  setup() {
-    const activeName = ref('kcml')
-    return { activeName }
+  // 使⽤computed对data进⾏处理：
+  computed: {
+    showHandleList() {
+      if (this.showAll == false) {
+        //收起状态-显示“展示”
+        var showList = [] //定义⼀个空数组
+        var showListLength = this.teacherMsg.courseList.length
+        console.log(showListLength)
+        if (showListLength > 5) {
+          //控制显⽰前6个
+          for (var i = 0; i < 5; i++) {
+            showList.push(this.teacherMsg.courseList[i]) //将数组的前3条存放到showList数组中
+          }
+        } else {
+          showList = this.teacherMsg.courseList //个数足够显示，不需要再截取
+        }
+        return showList //返回当前数组
+      } else {
+        // 展开状态-显示“收起”
+        return this.teacherMsg.courseList
+      }
+    },
   },
 }
 </script>
 
 <style lang="less" scoped>
+.score-img {
+  top: 2px;
+  width: 16px;
+  transition: all 0.3s;
+}
+.rotate-img {
+  transform: rotate(180deg);
+}
+
 .teacher-in {
   .teacher-ifo {
     position: relative;
     margin: 20px 0;
   }
-
+  h3 {
+    color: #333;
+  }
   .teacher-text {
     position: absolute;
     left: 130px;
@@ -217,6 +255,7 @@ export default {
   }
 
   .show-more {
+    margin: 0;
     padding: 20px 0;
     text-align: center;
   }
